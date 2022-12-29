@@ -1,8 +1,9 @@
 <h4 class="text-center">Registre-se e mostre seu pet ao mundo!</h4>
 
-<form class="form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
+<form class="form mt-4" [formGroup]="novoUsuarioForm"   (ngSubmit)="cadastrar()">
   <div class="form-group">
-    <input placeholder="e-mail" class="form-control" formControlName="email" />
+    <input placeholder="e-mail" class="form-control" 
+    formControlName="email" />
     <app-mensagem
       *ngIf="
         novoUsuarioForm.get('email')?.errors?.required &&
@@ -19,22 +20,7 @@
       mensagem="E-mail no formato incorreto"
     >
     </app-mensagem>
-  </div>
-  <div class="form-group">
-    <input
-      placeholder="Nome Completo"
-      class="form-control"
-      formControlName="fullName"
-    />
-    <app-mensagem
-      *ngIf="
-        novoUsuarioForm.get('fullName')?.errors &&
-        novoUsuarioForm.get('fullName')?.touched
-      "
-      mensagem="Nome incorreto"
-    >
-    </app-mensagem>
-  </div>
+  </div> 
   <div class="form-group">
     <input
       placeholder="Usuário"
@@ -66,6 +52,29 @@
       mensagem="Senha deve ser diferente do usuário"
     >
     </app-mensagem>
+  </div>
+
+  <div class="form-group">
+    <input
+      type="password"
+      placeholder="Confirmar Senha"
+      class="form-control"
+      formControlName="repassword"
+    />
+    <app-mensagem
+      *ngIf="novoUsuarioForm.errors?.senhaIgualUsuario"
+      mensagem="Senha deve ser diferente do usuário"
+    >
+    </app-mensagem>
+  </div>
+   
+  <div class="form-group">
+    <input
+      type="date"
+      placeholder="Data de Nascimento"
+      class="form-control"
+      formControlName="dataNascimento"
+    /> 
   </div>
 
   <button class="btn btn-primary btn-block">Cadastro</button>

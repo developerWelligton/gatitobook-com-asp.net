@@ -25,14 +25,15 @@ export class NovoUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.novoUsuarioForm = this.formBuilder.group(
       {
-        email: ['', [Validators.required, Validators.email]],
-        fullName: ['', [Validators.required, Validators.minLength(4)]],
+        email: ['', [Validators.required, Validators.email]], 
         userName: [
           '',
           [minusculoValidator],
           [this.usuarioExistenteServive.usuarioJaExite()],
         ],
         password: [''],
+        repassword: [''],
+        dataNascimento:['']
       },
       {
         validators: [usuarioSenhaIguaisValidator],
@@ -41,16 +42,18 @@ export class NovoUsuarioComponent implements OnInit {
   }
 
   cadastrar() {
-    if (this.novoUsuarioForm.valid) {
+     
+     //demanda: fazer a validacao do forms
       const novoUsuario = this.novoUsuarioForm.getRawValue() as NovoUsuario;
       this.novoUsuarioService.cadastraNovoUsuario(novoUsuario).subscribe(
         () => {
+          alert("Usuario criado, veja o token no seu email e envie para ativar")
           this.router.navigate(['']);
         },
         (error) => {
           console.log(error);
         }
       );
-    }
+     
   }
 }

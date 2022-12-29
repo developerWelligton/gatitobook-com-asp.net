@@ -1,6 +1,7 @@
 export interface NovoUsuario {
-  userName: string;
-  email: string;
-  fullName: string;
-  password: string;
+  Username?: string | undefined;
+  Email?: string| undefined;
+  Password?: string| undefined;
+  RePassword?:string| undefined;
+  DataNascimento:Date | undefined;
 }
