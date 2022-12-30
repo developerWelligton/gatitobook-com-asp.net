@@ -17,7 +17,7 @@ export class AutenticacaoService {
     
     return this.httpClient
       .post(
-        'http://localhost:6010/login',
+        'http://localhost:7000/login',
         {
           Username: usuario,
           Password: senha,
