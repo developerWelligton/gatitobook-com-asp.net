@@ -10,7 +10,7 @@ export class NovoUsuarioService {
 
   cadastraNovoUsuario(novoUsuario: NovoUsuario) {
     console.log("OI")
-    return this.http.post('http://localhost:6000/cadastro', novoUsuario);
+    return this.http.post('http://localhost:7000/cadastro', novoUsuario);
   }
 
   verificaUsuarioExistente(nomeUsuario: string) {
