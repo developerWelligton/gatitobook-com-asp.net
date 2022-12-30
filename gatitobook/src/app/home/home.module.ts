@@ -7,9 +7,10 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MensagemModule } from '../componentes/mensagem/mensagem.module';
 import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
+import { AtivaUsuarioComponent } from './ativa-usuario/ativa-usuario.component';
 
 @NgModule({
-  declarations: [HomeComponent, LoginComponent, NovoUsuarioComponent],
+  declarations: [HomeComponent, LoginComponent, NovoUsuarioComponent, AtivaUsuarioComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

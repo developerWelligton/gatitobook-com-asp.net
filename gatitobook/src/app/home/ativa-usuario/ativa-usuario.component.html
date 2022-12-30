@@ -1,0 +1,9 @@
+ <h4 class="text-center">Cole o token aqui para ativar sua conta!</h4>
+ <form class="form mt-4" [formGroup]="ativaUsuarioForm" (submit)="ativarCadastro()">
+    <div class="form-group">
+        <input placeholder="Token" class="form-control" formControlName="url"/>
+    </div> 
+    <button class="btn btn-primary btn-block">Ativar</button>
+ </form>
+
+ <p>Não é um usuário?<a [routerLink]="['']">Login</a></p>
