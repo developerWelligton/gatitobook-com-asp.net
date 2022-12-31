@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AtivaUsuarioService } from './ativa-usuario.service';
+import { ResetUser } from './ResetUser';
 
 @Component({
   selector: 'app-ativa-usuario',
@@ -16,13 +17,16 @@ export class AtivaUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.ativaUsuarioForm = this.formBuilder.group({
-      url:['']
+      email:[''],
+      password:[''],
+      repassword:[''],
+      token:['']
     })
   }
 
-  ativarCadastro(){
-    const ativaNovoUsuario = this.ativaUsuarioForm.getRawValue() as string;
-     this.ativaNovoUsuarioService.AtivaNovoUsuario(ativaNovoUsuario).subscribe((res)=>{
+  efetuareset(){
+    const efetuaresetUsuario = this.ativaUsuarioForm.getRawValue() as ResetUser;
+     this.ativaNovoUsuarioService.efetuaresetService(efetuaresetUsuario).subscribe((res)=>{
       console.log(res)
       this.router.navigate(['']);
      },

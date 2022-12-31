@@ -1,7 +1,16 @@
  <h4 class="text-center">Cole o token aqui para ativar sua conta!</h4>
- <form class="form mt-4" [formGroup]="ativaUsuarioForm" (submit)="ativarCadastro()">
+ <form class="form mt-4" [formGroup]="ativaUsuarioForm" (submit)="efetuareset()">
     <div class="form-group">
-        <input placeholder="Token" class="form-control" formControlName="url"/>
+        <input placeholder="Email" class="form-control" formControlName="email"/>
+    </div> 
+    <div class="form-group">
+        <input placeholder="Password" class="form-control" formControlName="password"/>
+    </div> 
+    <div class="form-group">
+        <input placeholder="RePassword" class="form-control" formControlName="repassword"/>
+    </div> 
+    <div class="form-group">
+        <input placeholder="Token" class="form-control" formControlName="token"/>
     </div> 
     <button class="btn btn-primary btn-block">Ativar</button>
  </form>
