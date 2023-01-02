@@ -37,7 +37,7 @@ export class RedefinicaoSenhaUsuarioComponent implements OnInit {
           alert("Usuário encontrado! Token enviado para email!")
           this.spinner.hide();
        
-       this.router.navigate(['']); 
+       this.router.navigate(['home/ativausuario']); 
       },
       (error)=>{
        alert(error.statusText + "Usuário nao encontrado")

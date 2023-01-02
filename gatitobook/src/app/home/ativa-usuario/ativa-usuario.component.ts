@@ -38,11 +38,13 @@ export class AtivaUsuarioComponent implements OnInit {
       this.ativaNovoUsuarioService.efetuaresetService(efetuaresetUsuario).subscribe((res)=>{
        console.log(res)
        this.spinner.hide();
+       alert("Senha redefinida com sucesso")
        this.router.navigate(['']);
       },
       (error)=>{
        console.log(error)
        this.spinner.hide();
+       alert("Erro ao redefinir senha: Dados invalidos")
       }
       )
     }else{
