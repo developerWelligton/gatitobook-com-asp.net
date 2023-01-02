@@ -1,5 +1,6 @@
 <h4 class="text-center">Solicitação de redefinição de senha</h4>
-
+ 
+ 
 <form class="form mt-4"  [formGroup]="redefinicaoUsuarioSenhaForm" (submit)="solicitarReset()" >
     <div class="form-group">
         <input placeholder="Email" type="email" class="form-control" name="email" formControlName="email"/>
@@ -20,7 +21,9 @@
     mensagem="E-mail no formato incorreto"
   >
   </app-mensagem>
+
  
+
   <button type="submit"
   class="btn btn-primary btn-block" 
   [disabled]="redefinicaoUsuarioSenhaForm.invalid"
@@ -28,4 +31,14 @@
   >Ativar</button>
  </form>
  <p>Não é um usuário?<a [routerLink]="['']">Login!</a></p>
- 
+ <!--SPINNER-->
+ <div> 
+    <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-scale-multiple"
+  >
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+</div>

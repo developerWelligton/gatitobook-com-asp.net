@@ -1,4 +1,6 @@
  <h4 class="text-center">Redefinição de senha!</h4>
+ <p>Obs. Solicite o reset da senha para receber o Token</p>
+   
  <form class="form mt-4" [formGroup]="ativaUsuarioForm" (submit)="efetuareset()">
     <div class="form-group">
         <input placeholder="Email" type="email" class="form-control" name="email" formControlName="email"/>
@@ -58,7 +60,7 @@
     </app-mensagem>
     </div>  
     <div class="form-group">
-        <input placeholder="Token" class="form-control" formControlName="token"/>
+        <input placeholder="Cole o Token aqui" class="form-control" formControlName="token"/>
         <app-mensagem
         *ngIf="
         ativaUsuarioForm.get('token')?.errors?.required &&

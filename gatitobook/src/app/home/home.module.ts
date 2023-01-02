@@ -9,6 +9,8 @@ import { MensagemModule } from '../componentes/mensagem/mensagem.module';
 import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
 import { AtivaUsuarioComponent } from './ativa-usuario/ativa-usuario.component';
 import { RedefinicaoSenhaUsuarioComponent } from './redefinicao-senha-usuario/redefinicao-senha-usuario.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [HomeComponent, LoginComponent, NovoUsuarioComponent, AtivaUsuarioComponent, RedefinicaoSenhaUsuarioComponent],
@@ -17,7 +19,8 @@ import { RedefinicaoSenhaUsuarioComponent } from './redefinicao-senha-usuario/re
     HomeRoutingModule,
     FormsModule,
     MensagemModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
+    NgxSpinnerModule 
   ],
   exports: [HomeComponent],
   

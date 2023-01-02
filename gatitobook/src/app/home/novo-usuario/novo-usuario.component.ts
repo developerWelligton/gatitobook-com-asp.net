@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ativaSenhaIguaisValidator } from '../ativa-usuario/ativa-senha-iguais.validator';
 import { minusculoValidator } from './minusculo.validator';
 import { NovoUsuario } from './novo-usuario';
@@ -21,7 +22,8 @@ export class NovoUsuarioComponent implements OnInit {
     private formBuilder: FormBuilder,
     private novoUsuarioService: NovoUsuarioService,
     private usuarioExistenteServive: UsuarioExisteService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -42,16 +44,18 @@ export class NovoUsuarioComponent implements OnInit {
   }
 
   cadastrar() {
-     
+    this.spinner.show();
     if(this.novoUsuarioForm.valid){ 
       const novoUsuario = this.novoUsuarioForm.getRawValue() as NovoUsuario;
       this.novoUsuarioService.cadastraNovoUsuario(novoUsuario).subscribe(
         () => {
           alert("Usuario criado, veja o token no seu email e envie para ativar")
+          this.spinner.hide();
           this.router.navigate(['']);
         },
         (error) => {
           console.log(error);
+          this.spinner.hide()
         }
       );
     }

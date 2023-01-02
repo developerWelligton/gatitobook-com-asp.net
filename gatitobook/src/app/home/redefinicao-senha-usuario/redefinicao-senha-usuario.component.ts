@@ -16,26 +16,32 @@ export class RedefinicaoSenhaUsuarioComponent implements OnInit {
     private router: Router,
     private spinner: NgxSpinnerService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+     
     this.redefinicaoUsuarioSenhaForm = this.formBuilder.group({
       email:['',[Validators.required, Validators.email] ], 
     }) 
+    
   }
-  showingSpinner(){
-    this.spinner.show()
-  }
+  
+ 
+   
   solicitarReset(){
-    if(this.redefinicaoUsuarioSenhaForm.valid){
-
+    this.spinner.show()
+    if(this.redefinicaoUsuarioSenhaForm.valid){ 
       const solicitaResetUsuario = this.redefinicaoUsuarioSenhaForm.getRawValue();
       this.redefinicaoSenhaUsuarioServiceService.solicitarResetService(solicitaResetUsuario).subscribe((res)=>{
-       console.log(res)
-       alert("Usuário encontrado! Token enviado para email!")
-       this.router.navigate(['']);
-        
+     
+        console.log(res)
+         
+          alert("Usuário encontrado! Token enviado para email!")
+          this.spinner.hide();
+       
+       this.router.navigate(['']); 
       },
       (error)=>{
        alert(error.statusText + "Usuário nao encontrado")
+       this.spinner.hide();
       }
       )
     }else{
