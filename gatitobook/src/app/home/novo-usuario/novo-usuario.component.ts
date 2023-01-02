@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ativaSenhaIguaisValidator } from '../ativa-usuario/ativa-senha-iguais.validator';
 import { minusculoValidator } from './minusculo.validator';
 import { NovoUsuario } from './novo-usuario';
+import { novoUsuarioSenhaIguaisValidator } from './novo-usuario-senha-iguais.validator';
 import { NovoUsuarioService } from './novo-usuario.service';
 import { UsuarioExisteService } from './usuario-existe.service';
 import { usuarioSenhaIguaisValidator } from './usuario-senha-iguais.validator';
@@ -27,23 +29,21 @@ export class NovoUsuarioComponent implements OnInit {
       {
         email: ['', [Validators.required, Validators.email]], 
         userName: [
-          '',
-          [minusculoValidator],
-          [this.usuarioExistenteServive.usuarioJaExite()],
+          '',[Validators.required],
         ],
-        password: [''],
-        repassword: [''],
-        dataNascimento:['']
+        password: ['',[Validators.required]],
+        repassword: ['',[Validators.required]],
+        dataNascimento:['',[Validators.required]]
       },
       {
-        validators: [usuarioSenhaIguaisValidator],
+        validators: [usuarioSenhaIguaisValidator,novoUsuarioSenhaIguaisValidator], 
       }
     );
   }
 
   cadastrar() {
      
-     //demanda: fazer a validacao do forms
+    if(this.novoUsuarioForm.valid){ 
       const novoUsuario = this.novoUsuarioForm.getRawValue() as NovoUsuario;
       this.novoUsuarioService.cadastraNovoUsuario(novoUsuario).subscribe(
         () => {
@@ -54,6 +54,9 @@ export class NovoUsuarioComponent implements OnInit {
           console.log(error);
         }
       );
+    }
+
+      
      
   }
 }

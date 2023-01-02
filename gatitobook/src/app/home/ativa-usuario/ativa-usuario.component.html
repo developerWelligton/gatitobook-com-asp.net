@@ -1,18 +1,76 @@
  <h4 class="text-center">Cole o token aqui para ativar sua conta!</h4>
  <form class="form mt-4" [formGroup]="ativaUsuarioForm" (submit)="efetuareset()">
     <div class="form-group">
-        <input placeholder="Email" class="form-control" formControlName="email"/>
+        <input placeholder="Email" type="email" class="form-control" name="email" formControlName="email"/>
+        <app-mensagem
+        *ngIf="
+        ativaUsuarioForm.get('email')?.errors?.required &&
+        ativaUsuarioForm.get('email')?.touched
+        "
+        mensagem="E-mail obrigatório"
+        >
+        </app-mensagem>
+        <app-mensagem
+        *ngIf="
+          ativaUsuarioForm.get('email')?.errors?.email &&
+          ativaUsuarioForm.get('email')?.touched
+        "
+        mensagem="E-mail no formato incorreto"
+      >
+      </app-mensagem>
     </div> 
+
     <div class="form-group">
-        <input placeholder="Password" class="form-control" formControlName="password"/>
-    </div> 
+        <input placeholder="Password" class="form-control" formControlName="password" type="password"/>
+        <app-mensagem
+        *ngIf="
+        ativaUsuarioForm.get('password')?.errors?.required &&
+        ativaUsuarioForm.get('password')?.touched
+        "
+        mensagem="Password obrigatório"
+        >
+      </app-mensagem>
+      <app-mensagem
+      *ngIf="
+      ativaUsuarioForm.get('password')?.errors?.minusculo &&
+      ativaUsuarioForm.get('password')?.touched
+      "
+      mensagem="Password deve ter pelo menos uma letra maiúscula"
+    >
+    </app-mensagem>
+      
+    </div>  
+
     <div class="form-group">
-        <input placeholder="RePassword" class="form-control" formControlName="repassword"/>
-    </div> 
+        <input placeholder="RePassword" class="form-control" formControlName="repassword" type="password"/>
+        <app-mensagem
+        *ngIf="
+        ativaUsuarioForm.get('repassword')?.errors?.required &&
+        ativaUsuarioForm.get('repassword')?.touched
+        "
+        mensagem="RePassword obrigatório"
+      >
+      </app-mensagem>
+      <app-mensagem
+      *ngIf="ativaUsuarioForm.errors?.senhaIgualUsuario"
+      mensagem="Password deve ser igual do Repassword"
+    >
+    </app-mensagem>
+    </div>  
     <div class="form-group">
         <input placeholder="Token" class="form-control" formControlName="token"/>
+        <app-mensagem
+        *ngIf="
+        ativaUsuarioForm.get('token')?.errors?.required &&
+        ativaUsuarioForm.get('token')?.touched
+        "
+        mensagem="Token obrigatório"
+      >
+      </app-mensagem>
     </div> 
-    <button class="btn btn-primary btn-block">Ativar</button>
+    <button type="submit"
+    class="btn btn-primary btn-block"
+    [disabled]="ativaUsuarioForm.invalid">Ativar</button>
  </form>
 
  <p>Não é um usuário?<a [routerLink]="['']">Login</a></p>

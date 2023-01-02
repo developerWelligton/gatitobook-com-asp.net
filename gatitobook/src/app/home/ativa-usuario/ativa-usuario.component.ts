@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ativaSenhaIguaisValidator } from './ativa-senha-iguais.validator';
 import { AtivaUsuarioService } from './ativa-usuario.service';
+import { minusculoValidator } from './minusculo.validator';
 import { ResetUser } from './ResetUser';
 
 @Component({
@@ -17,22 +19,29 @@ export class AtivaUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.ativaUsuarioForm = this.formBuilder.group({
-      email:[''],
-      password:[''],
-      repassword:[''],
-      token:['']
+      email:['',[Validators.required, Validators.email] ],
+      password:['',[Validators.required]],
+      repassword:['',[Validators.required]],
+      token:['',[Validators.required]]
+    },
+    {
+      validators: [ativaSenhaIguaisValidator],
     })
   }
 
   efetuareset(){
-    const efetuaresetUsuario = this.ativaUsuarioForm.getRawValue() as ResetUser;
-     this.ativaNovoUsuarioService.efetuaresetService(efetuaresetUsuario).subscribe((res)=>{
-      console.log(res)
-      this.router.navigate(['']);
-     },
-     (error)=>{
-      console.log(error)
-     }
-     )
+    if(this.ativaUsuarioForm.valid){
+      const efetuaresetUsuario = this.ativaUsuarioForm.getRawValue() as ResetUser;
+      this.ativaNovoUsuarioService.efetuaresetService(efetuaresetUsuario).subscribe((res)=>{
+       console.log(res)
+       this.router.navigate(['']);
+      },
+      (error)=>{
+       console.log(error)
+      }
+      )
+    }else{
+      alert("Dados invalidos")
+    } 
   }
 }

@@ -39,6 +39,14 @@
       *ngIf="novoUsuarioForm.get('userName')?.errors?.usuarioExistente"
       mensagem="Usuário já existe"
     ></app-mensagem>
+    <app-mensagem
+    *ngIf="
+      novoUsuarioForm.get('userName')?.errors?.required &&
+      novoUsuarioForm.get('userName')?.touched
+    "
+    mensagem="userName obrigatório"
+  >
+  </app-mensagem>
   </div>
   <div class="form-group">
     <input
@@ -52,6 +60,16 @@
       mensagem="Senha deve ser diferente do usuário"
     >
     </app-mensagem>
+    <app-mensagem
+    *ngIf="
+      novoUsuarioForm.get('password')?.errors?.required &&
+      novoUsuarioForm.get('password')?.touched
+    "
+    mensagem="password obrigatório"
+  >
+  </app-mensagem>
+  
+    
   </div>
 
   <div class="form-group">
@@ -66,6 +84,12 @@
       mensagem="Senha deve ser diferente do usuário"
     >
     </app-mensagem>
+
+   <app-mensagem
+      *ngIf="novoUsuarioForm.errors?.RepasswordIgualPassword"
+      mensagem="repassword tem q ser igual password"
+    >
+    </app-mensagem>
   </div>
    
   <div class="form-group">
@@ -75,9 +99,17 @@
       class="form-control"
       formControlName="dataNascimento"
     /> 
+    <app-mensagem
+    *ngIf="
+      novoUsuarioForm.get('dataNascimento')?.errors?.required &&
+      novoUsuarioForm.get('dataNascimento')?.touched
+    "
+    mensagem="Data Nascimento obrigatório"
+  >
+  </app-mensagem>
   </div>
 
-  <button class="btn btn-primary btn-block">Cadastro</button>
+  <button class="btn btn-primary btn-block " [disabled]="novoUsuarioForm.invalid">Cadastro</button>
 </form>
 
 <p>Já um usuário? <a [routerLink]="['']"> Faça Login</a></p>
