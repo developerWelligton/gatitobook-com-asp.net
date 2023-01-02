@@ -8,9 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MensagemModule } from '../componentes/mensagem/mensagem.module';
 import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
 import { AtivaUsuarioComponent } from './ativa-usuario/ativa-usuario.component';
+import { RedefinicaoSenhaUsuarioComponent } from './redefinicao-senha-usuario/redefinicao-senha-usuario.component';
 
 @NgModule({
-  declarations: [HomeComponent, LoginComponent, NovoUsuarioComponent, AtivaUsuarioComponent],
+  declarations: [HomeComponent, LoginComponent, NovoUsuarioComponent, AtivaUsuarioComponent, RedefinicaoSenhaUsuarioComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
