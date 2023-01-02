@@ -20,5 +20,6 @@ import { RedefinicaoSenhaUsuarioComponent } from './redefinicao-senha-usuario/re
     ReactiveFormsModule,
   ],
   exports: [HomeComponent],
+  
 })
 export class HomeModule {}

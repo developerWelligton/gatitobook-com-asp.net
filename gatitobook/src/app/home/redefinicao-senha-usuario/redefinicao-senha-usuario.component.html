@@ -1,10 +1,31 @@
 <h4 class="text-center">Solicitação de redefinição de senha</h4>
 
-<form class="form mt-4" >
+<form class="form mt-4"  [formGroup]="redefinicaoUsuarioSenhaForm" (submit)="solicitarReset()" >
     <div class="form-group">
         <input placeholder="Email" type="email" class="form-control" name="email" formControlName="email"/>
-    </div>  
-    <button type="submit"
-    class="btn btn-primary btn-block">Ativar</button>
+    </div>   
+    <app-mensagem
+    *ngIf="
+    redefinicaoUsuarioSenhaForm.get('email')?.errors?.required &&
+    redefinicaoUsuarioSenhaForm.get('email')?.touched
+    "
+    mensagem="E-mail obrigatório"
+    >
+    </app-mensagem>
+    <app-mensagem
+    *ngIf="
+    redefinicaoUsuarioSenhaForm.get('email')?.errors?.email &&
+    redefinicaoUsuarioSenhaForm.get('email')?.touched
+    "
+    mensagem="E-mail no formato incorreto"
+  >
+  </app-mensagem>
+ 
+  <button type="submit"
+  class="btn btn-primary btn-block" 
+  [disabled]="redefinicaoUsuarioSenhaForm.invalid"
+  
+  >Ativar</button>
  </form>
  <p>Não é um usuário?<a [routerLink]="['']">Login!</a></p>
+ 
