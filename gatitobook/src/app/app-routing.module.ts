@@ -15,9 +15,9 @@ const routes: Routes = [
     canLoad:[LoginGuard]
   },
   {
-    path: 'animais',
+    path: 'cinema',
     loadChildren: () =>
-      import('./animais/animais.module').then((m) => m.AnimaisModule),
+      import('./cinema/cinema.module').then((m) => m.CinemaModule),
       canLoad:[AutenticacaoGuard]
   },
 ];

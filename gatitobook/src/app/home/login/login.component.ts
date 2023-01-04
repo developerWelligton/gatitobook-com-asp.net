@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.authService.autenticar(this.usuario, this.senha).subscribe(
       () => {
         this.spinner.hide();
-        this.router.navigate(['animais']);
+        this.router.navigate(['cinema']);
       },
       (error) => {
         this.spinner.hide();
