@@ -4,28 +4,72 @@
 <form [formGroup]="formularioFilme"   (submit)="cadastrar()">
     <div class="form-group">
       <label for="titulo">Titulo do Filme</label>
-      <input type="text" class="form-control" id="tituloFilme"  placeholder="Título" formControlName="titulo"
+      <input type="text" class="form-control" id="tituloFilme"  placeholder="Título" 
+      formControlName="titulo"
       name="titulo" > 
+      <app-mensagem
+        *ngIf="
+        formularioFilme.get('titulo')?.errors?.required &&
+        formularioFilme.get('titulo')?.touched
+        "
+        mensagem="Título obrigatório"
+        >
+      </app-mensagem>
     </div>
     <div class="form-group">
         <label for="diretor">Diretor do Filme</label>
         <input type="text" class="form-control" id="diretorFilme"  placeholder="Diretor" formControlName="diretor"
-        name="diretor" > 
+        name="diretor" >
+        <app-mensagem
+        *ngIf="
+        formularioFilme.get('diretor')?.errors?.required &&
+        formularioFilme.get('diretor')?.touched
+        "
+        mensagem="Diretor obrigatório"
+        >
+      </app-mensagem> 
     </div>
     <div class="form-group">
         <label for="genero">Gênero do Filme</label>
-        <input type="text" class="form-control" id="generoFilme"  placeholder="Gênero" formControlName="genero"
+        <input type="text" class="form-control" id="generoFilme"  placeholder="Gênero" 
+        formControlName="genero"
         name="genero" > 
+        <app-mensagem
+        *ngIf="
+        formularioFilme.get('genero')?.errors?.required &&
+        formularioFilme.get('genero')?.touched
+        "
+        mensagem="Genero obrigatório"
+        >
+      </app-mensagem>
     </div>
     <div class="form-group">
         <label for="genero">Duração do Filme (minutos)</label>
-        <input type="number" class="form-control" id="duracaoFilme"  placeholder="Duração" formControlName="duracao"
-        name="duracao" > 
+        <input type="number" class="form-control" id="duracaoFilme"  placeholder="Duração" 
+        formControlName="duracao"
+        name="duracao" >
+        <app-mensagem
+        *ngIf="
+        formularioFilme.get('duracao')?.errors?.required &&
+        formularioFilme.get('duracao')?.touched
+        "
+        mensagem="Duraçao obrigatório"
+        >
+      </app-mensagem> 
     </div>
     <div class="form-group">
         <label for="classificacaoEtaria">Classificação Etária (idade)</label>
-        <input type="number" class="form-control" id="classificacaoEtariaFilme"  placeholder="classificacao Etaria" formControlName="classificacaoEtaria"
-        name="classificacaoEtaria" > 
+        <input type="number" class="form-control" id="classificacaoEtariaFilme"  placeholder="classificacao Etaria" 
+        formControlName="classificacaoEtaria"
+        name="classificacaoEtaria" >
+        <app-mensagem
+        *ngIf="
+        formularioFilme.get('classificacaoEtaria')?.errors?.required &&
+        formularioFilme.get('classificacaoEtaria')?.touched
+        "
+        mensagem="Classificação etária obrigatório"
+        >
+       </app-mensagem> 
     </div>
     
     <button

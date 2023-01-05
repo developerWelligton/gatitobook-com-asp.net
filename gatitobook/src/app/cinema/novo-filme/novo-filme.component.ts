@@ -34,8 +34,8 @@ export class NovoFilmeComponent implements OnInit {
       this.novoFilmeService.cadastraNovoFilme(novoFilme).subscribe(
         () => {
           alert("Filme criado")
-          this.spinner.hide();
-          this.router.navigate(['']);
+          this.spinner.hide(); 
+          this.formularioFilme.reset()
         },
         (error:any) => {
           console.log(error);
