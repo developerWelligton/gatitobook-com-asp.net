@@ -6,22 +6,28 @@
                 <h4>Filmes</h4>
                </div>
                <div class="float-right">
-                <button type="button" class="btn btn-primary" [routerLink]="['cinena','novo-filme']">Novo Filme</button>
+                <button type="button" class="btn btn-primary" [routerLink]="['novo-filme']">Novo Filme</button>
               </div>
             </div>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Curso</th>
-                            <th></th>
+                            <th>Título</th>
+                            <th>Diretor</th>
+                            <th>Genero</th>
+                            <th>Duração</th>
+                            <th>Classificação</th> 
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let filme of filmes">
-                            <td>{{filmes}}</td>
-                            <td></td>
+                            <td>{{filme.titulo}}</td>
+                            <td>{{filme.diretor}}</td>
+                            <td>{{filme.genero}}</td>
+                            <td>{{filme.duracao}}</td>
+                            <td>{{filme.classificacaoEtaria}}</td>
+                             
                             <td>
                                 <span class="float-right">
                                     <button class="btn btn-outline-warning mb-1 btn-sm">Atualizar</button>
