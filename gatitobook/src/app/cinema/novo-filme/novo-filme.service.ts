@@ -9,11 +9,9 @@ import { Filme } from './Filme';
 export class NovoFilmeService { 
 
   constructor(private http: HttpClient,
-    private tokenService: TokenService, ) {}
+    private tokenService: TokenService) {}
     
-     
-  
-   
+      
   cadastraNovoFilme(novoFilme: Filme){
     const token = JSON.parse(this.tokenService.retornaToken());
 

@@ -1,0 +1,39 @@
+<div class="container"> 
+    <h4 class="text-center">Listar Filme</h4> 
+        <div class="card">
+          <div class="card-header"> 
+            <div class="float-start">
+                <h4>Filmes</h4>
+               </div>
+               <div class="float-right">
+                <button type="button" class="btn btn-primary" [routerLink]="['cinena','novo-filme']">Novo Filme</button>
+              </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Curso</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let filme of filmes">
+                            <td>{{filmes}}</td>
+                            <td></td>
+                            <td>
+                                <span class="float-right">
+                                    <button class="btn btn-outline-warning mb-1 btn-sm">Atualizar</button>
+                                    {{''}}
+                                    <button class="btn btn-outline-danger mb-1 btn-sm">Remover</button>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+           
+        </div>
+    </div>
+    
