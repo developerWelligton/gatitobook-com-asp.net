@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CinemaRoutingModule } from './cinema-routing.module';
-import { ListaCinemaComponent } from './lista-cinema/lista-cinema.component';
-import { NovoFilmeComponent } from './novo-filme/novo-filme.component';
+ 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeCinemaComponent } from './home-cinema/home-cinema.component';
+import { NovoFilmeComponent } from './novo-filme/novo-filme.component';
 
 
 @NgModule({
-  declarations: [ListaCinemaComponent, NovoFilmeComponent],
+  declarations: [HomeCinemaComponent, NovoFilmeComponent],
   imports: [
     CommonModule,
     CinemaRoutingModule,
