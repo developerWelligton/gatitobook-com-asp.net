@@ -8,7 +8,7 @@
     background: rgb(134, 134, 134);
     top:0;
     left: -90%;
-    transition: left 0.5s ease-out;
+    transition: left 0.3s ease-out;
     z-index: 1;
 }
 
