@@ -8,6 +8,7 @@ import { HomeCinemaComponent } from './home-cinema/home-cinema.component';
 import { NovoFilmeComponent } from './novo-filme/novo-filme.component';
 import { ListaFilmeComponent } from './lista-filme/lista-filme.component';
 import { MensagemModule } from "../componentes/mensagem/mensagem.module";
+ 
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MensagemModule } from "../componentes/mensagem/mensagem.module";
         CinemaRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        MensagemModule
+        MensagemModule,
+         
     ]
 })
 export class CinemaModule { }

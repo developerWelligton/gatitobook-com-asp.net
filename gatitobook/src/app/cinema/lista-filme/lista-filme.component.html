@@ -6,7 +6,7 @@
                 <h4>Filmes</h4>
                </div>
                <div class="float-right">
-                <button type="button" class="btn btn-primary" [routerLink]="['novo-filme']">Novo Filme</button>
+                <button type="button" class="btn btn-primary">Novo Filme</button>
               </div>
             </div>
             <div class="card-body">
@@ -41,5 +41,18 @@
             </div>
            
         </div>
-    </div>
-    
+    </div> 
+<br>
+
+
+
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button>
+<br><br>
+<pre class="card card-block card-header">{{message}}</pre>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>

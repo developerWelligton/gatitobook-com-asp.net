@@ -8,6 +8,7 @@ import { RodapeModule } from './componentes/rodape/rodape.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
  
 
 @NgModule({
@@ -19,9 +20,10 @@ import { NgxSpinnerModule } from "ngx-spinner";
     CabecalhoModule,
     RodapeModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule 
+    NgxSpinnerModule,
+    ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
