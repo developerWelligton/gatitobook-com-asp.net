@@ -10,7 +10,7 @@
               </div>
             </div>
             <div class="card-body">
-                <table class="table table-hover" ngIf="filmes$ | async;">
+                <table class="table table-hover" *ngIf="filmes$ | async as filme; else loading">
                     <thead>
                         <tr>
                             <th>Título</th>
@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let filme of filmes$ | async">
+                        <tr *ngFor="let filme of filme">
                             <td>{{filme.titulo}}</td>
                             <td>{{filme.diretor}}</td>
                             <td>{{filme.genero}}</td>

@@ -11,6 +11,7 @@ import { empty, Observable } from 'rxjs';
   styleUrls: ['./lista-filme.component.css']
 })
 export class ListaFilmeComponent implements OnInit {
+  
   filmes$: Observable<Filme[]> | undefined 
   deleteModalRef?: BsModalRef;
   @ViewChild('deleteModal') deleteModal:any;
