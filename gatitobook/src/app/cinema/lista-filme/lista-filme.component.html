@@ -10,7 +10,7 @@
               </div>
             </div>
             <div class="card-body">
-                <table class="table table-hover">
+                <table class="table table-hover" ngIf="filmes$ | async;">
                     <thead>
                         <tr>
                             <th>Título</th>
@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let filme of filmes">
+                        <tr *ngFor="let filme of filmes$ | async">
                             <td>{{filme.titulo}}</td>
                             <td>{{filme.diretor}}</td>
                             <td>{{filme.genero}}</td>
@@ -32,27 +32,25 @@
                                 <span class="float-right">
                                     <button class="btn btn-outline-warning mb-1 btn-sm">Atualizar</button>
                                     {{''}}
-                                    <button class="btn btn-outline-danger mb-1 btn-sm">Remover</button>
+                                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="OnDelete(filme)">Remover</button>
                                 </span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <ng-template #loading>
+                    <span>Carregando Cursos ...</span>
+                </ng-template>
             </div>
            
         </div>
     </div> 
 <br>
-
-
-
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button>
-<br><br>
-<pre class="card card-block card-header">{{message}}</pre>
-<ng-template #template>
+ 
+<ng-template #deleteModal>
   <div class="modal-body text-center">
-    <p>Do you want to confirm?</p>
-    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    <p>Tem certeza que deseja remover esse filme?</p>
+    <button type="button" class="btn btn-default" (click)="OnConfirmDelete()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="OnDeclineDelete()">Não</button>
   </div>
 </ng-template>
