@@ -10,9 +10,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModule, AlertConfig } from 'ngx-bootstrap/alert';
+import { AlertModalComponent } from './shared/alert-modal/alert-modal.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AlertModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

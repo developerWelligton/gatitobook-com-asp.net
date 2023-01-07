@@ -5,6 +5,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { catchError } from 'rxjs/operators';
 import { empty, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 
 @Component({
   selector: 'app-lista-filme',
@@ -18,19 +19,13 @@ export class ListaFilmeComponent implements OnInit {
   @ViewChild('deleteModal') deleteModal:any;
 
   filmeSelecionado:Filme | undefined
-  alertService: any;
-
-  //alert
-   openSuccess: boolean = false;
-   openDanger: boolean = false;
-   dismissible: boolean = true;
-   timeout: number = 7000;
-
+  
   constructor(
     private listafilmeService: ListaFilmeService,
-    private modalService: BsModalService,
+    private alertService: AlertService,
     private router: Router,
-    private route: ActivatedRoute) {  
+    private route: ActivatedRoute,
+    private modalService:BsModalService) {  
     }
 
   ngOnInit(): void {
@@ -49,16 +44,15 @@ export class ListaFilmeComponent implements OnInit {
       success => this.OnRefresh(),
       error => this.handlerError()
     );
-    this.deleteModalRef?.hide();
-    this.openSuccess = true;
+    this.deleteModalRef?.hide(); 
   }
   
   OnDeclineDelete(){
-    this.deleteModalRef?.hide();
-    this.openDanger = true;
+    this.deleteModalRef?.hide(); 
   }
 
   OnRefresh(){
+    this.alertService.showAlert("filme deletado",AlertTypes.SUCCESS)
      this.filmes$ = this.listafilmeService.retornaFilmes().pipe(
       catchError(error => {
         console.error(error);
@@ -70,11 +64,7 @@ export class ListaFilmeComponent implements OnInit {
   handlerError() {
     this.alertService.showAlertDanger("Erro ao carregar filmes!")
   }
-  
-  log(alert:any){
-    console.log('alert message closed');
- }
-
+   
  onEdit(id:Filme){
   this.router.navigate(['filme',id],{relativeTo:this.route});
  }
