@@ -4,6 +4,7 @@ import { ListaFilmeService } from './lista-filme.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { catchError } from 'rxjs/operators';
 import { empty, Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-filme',
@@ -25,8 +26,11 @@ export class ListaFilmeComponent implements OnInit {
    dismissible: boolean = true;
    timeout: number = 7000;
 
-  constructor(private listafilmeService: ListaFilmeService,
-    private modalService: BsModalService) {  
+  constructor(
+    private listafilmeService: ListaFilmeService,
+    private modalService: BsModalService,
+    private router: Router,
+    private route: ActivatedRoute) {  
     }
 
   ngOnInit(): void {
@@ -69,6 +73,10 @@ export class ListaFilmeComponent implements OnInit {
   
   log(alert:any){
     console.log('alert message closed');
+ }
+
+ onEdit(id:Filme){
+  this.router.navigate(['filme',id],{relativeTo:this.route});
  }
    
 }

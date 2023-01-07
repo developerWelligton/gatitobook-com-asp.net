@@ -9,11 +9,12 @@ import { NovoFilmeComponent } from './novo-filme/novo-filme.component';
 import { ListaFilmeComponent } from './lista-filme/lista-filme.component';
 import { MensagemModule } from "../componentes/mensagem/mensagem.module";
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component';
  
 
 
 @NgModule({
-    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent],
+    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent],
     imports: [
         CommonModule,
         CinemaRoutingModule,
