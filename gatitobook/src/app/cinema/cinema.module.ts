@@ -8,6 +8,7 @@ import { HomeCinemaComponent } from './home-cinema/home-cinema.component';
 import { NovoFilmeComponent } from './novo-filme/novo-filme.component';
 import { ListaFilmeComponent } from './lista-filme/lista-filme.component';
 import { MensagemModule } from "../componentes/mensagem/mensagem.module";
+import { AlertModule } from 'ngx-bootstrap/alert';
  
 
 
@@ -19,7 +20,7 @@ import { MensagemModule } from "../componentes/mensagem/mensagem.module";
         FormsModule,
         ReactiveFormsModule,
         MensagemModule,
-         
+        AlertModule 
     ]
 })
 export class CinemaModule { }

@@ -11,13 +11,19 @@ import { empty, Observable } from 'rxjs';
   styleUrls: ['./lista-filme.component.css']
 })
 export class ListaFilmeComponent implements OnInit {
-  
+
   filmes$: Observable<Filme[]> | undefined 
   deleteModalRef?: BsModalRef;
   @ViewChild('deleteModal') deleteModal:any;
 
   filmeSelecionado:Filme | undefined
   alertService: any;
+
+  //alert
+   openSuccess: boolean = false;
+   openDanger: boolean = false;
+   dismissible: boolean = true;
+   timeout: number = 7000;
 
   constructor(private listafilmeService: ListaFilmeService,
     private modalService: BsModalService) {  
@@ -36,11 +42,16 @@ export class ListaFilmeComponent implements OnInit {
 
   OnConfirmDelete(){
     this.listafilmeService.remove(this.filmeSelecionado?.id).subscribe(  
+      success => this.OnRefresh(),
+      error => this.handlerError()
     );
+    this.deleteModalRef?.hide();
+    this.openSuccess = true;
   }
   
   OnDeclineDelete(){
     this.deleteModalRef?.hide();
+    this.openDanger = true;
   }
 
   OnRefresh(){
@@ -56,5 +67,8 @@ export class ListaFilmeComponent implements OnInit {
     this.alertService.showAlertDanger("Erro ao carregar filmes!")
   }
   
+  log(alert:any){
+    console.log('alert message closed');
+ }
    
 }

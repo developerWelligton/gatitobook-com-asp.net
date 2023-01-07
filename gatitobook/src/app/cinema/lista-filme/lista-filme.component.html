@@ -54,3 +54,17 @@
     <button type="button" class="btn btn-primary" (click)="OnDeclineDelete()">Não</button>
   </div>
 </ng-template>
+
+<alert type="success" 
+   [dismissible]="dismissible"
+   [isOpen]="openSuccess"
+   (onClosed)="log($event)"
+   [dismissOnTimeout]="timeout">
+   <h4 class="alert-heading">Deletado com sucesso!</h4>
+   <p>Success Message</p>
+</alert>
+ 
+<alert type="danger"
+[isOpen]="openDanger">
+   <strong>Oh snap!</strong> Error
+</alert>

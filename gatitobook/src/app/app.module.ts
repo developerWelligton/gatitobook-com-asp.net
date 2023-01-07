@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
- 
+import { AlertModule, AlertConfig } from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,11 +19,12 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     CabecalhoModule,
     RodapeModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, 
     NgxSpinnerModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AlertModule
   ],
-  providers: [BsModalService],
+  providers: [BsModalService,AlertConfig],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
