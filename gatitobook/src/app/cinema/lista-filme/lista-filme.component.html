@@ -50,8 +50,9 @@
 <ng-template #deleteModal>
   <div class="modal-body text-center">
     <p>Tem certeza que deseja remover esse filme?</p>
-    <button type="button" class="btn btn-default" (click)="OnConfirmDelete()">Sim</button>
-    <button type="button" class="btn btn-primary" (click)="OnDeclineDelete()">Não</button>
+    <button type="button" class="btn btn-outline-danger" (click)="OnConfirmDelete()">Sim</button>
+    {{''}}
+    <button type="button" class="btn btn-outline-success" (click)="OnDeclineDelete()">Não</button>
   </div>
 </ng-template>
  

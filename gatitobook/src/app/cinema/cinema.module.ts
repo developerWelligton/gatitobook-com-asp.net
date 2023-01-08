@@ -10,6 +10,7 @@ import { ListaFilmeComponent } from './lista-filme/lista-filme.component';
 import { MensagemModule } from "../componentes/mensagem/mensagem.module";
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component';
+import { FilmeResolver } from './guards/filmeResolver';
  
 
 
@@ -22,6 +23,9 @@ import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.compo
         ReactiveFormsModule,
         MensagemModule,
         AlertModule 
+    ],
+    providers:[
+        FilmeResolver
     ]
 })
 export class CinemaModule { }
