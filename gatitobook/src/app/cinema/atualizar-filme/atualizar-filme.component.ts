@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { AlertTypes } from 'src/app/shared/alert.service';
+import { delay, map, switchMap } from 'rxjs/operators';
+import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { Filme } from '../novo-filme/Filme';
 import { AtualizarFilmeService } from './atualizar-filme.service';
 
@@ -20,8 +20,10 @@ export class AtualizarFilmeComponent implements OnInit {
   id:any;
   constructor(private fb: FormBuilder, 
     private route:ActivatedRoute,
+    private router: Router,
     private serviceAtualiza:AtualizarFilmeService,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService,
+    private alertService: AlertService) { }
 
   ngOnInit(): void {
       
@@ -41,7 +43,16 @@ export class AtualizarFilmeComponent implements OnInit {
     this.submitted = true;
     console.log(this.formularioAtualizaFilme.value)
     if(this.formularioAtualizaFilme.valid){ 
-      this.serviceAtualiza.updateFilmeId(this.formularioAtualizaFilme.value).subscribe();
+      this.serviceAtualiza.updateFilmeId(this.formularioAtualizaFilme.value).subscribe(
+        success => {
+          this.alertService.showAlert("Filme atualizado com sucesso!",AlertTypes.SUCCESS) 
+          this.router.navigateByUrl("cinema/lista-filme")  
+        
+        },error => {this.alertService.showAlert("Filme não atualizado!",AlertTypes.DANGER) 
+          
+          this.router.navigateByUrl("cinema/lista-filme") 
+        }
+      );
     }
   }
 
