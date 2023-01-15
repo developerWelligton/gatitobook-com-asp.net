@@ -19,7 +19,7 @@ export class ListaFilmeComponent implements OnInit {
   @ViewChild('deleteModal') deleteModal:any;
 
   filmeSelecionado:Filme | undefined
-  
+  p: number = 1;
   constructor(
     private listafilmeService: ListaFilmeService,
     private alertService: AlertService,

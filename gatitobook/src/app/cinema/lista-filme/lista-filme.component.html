@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let filme of filme">
+                        <tr *ngFor="let filme of filme | paginate: { itemsPerPage: 10, currentPage: p }">
                             <td>{{filme.titulo}}</td>
                             <td>{{filme.diretor}}</td>
                             <td>{{filme.genero}}</td>
@@ -38,6 +38,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
                 <ng-template #loading>
                     <span>Carregando Cursos ...</span>
                 </ng-template>

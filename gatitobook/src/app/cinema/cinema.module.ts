@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CinemaRoutingModule } from './cinema-routing.module';
@@ -11,6 +11,7 @@ import { MensagemModule } from "../componentes/mensagem/mensagem.module";
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component';
 import { FilmeResolver } from './guards/filmeResolver';
+import {NgxPaginationModule} from 'ngx-pagination';
  
 
 
@@ -22,10 +23,13 @@ import { FilmeResolver } from './guards/filmeResolver';
         FormsModule,
         ReactiveFormsModule,
         MensagemModule,
-        AlertModule 
+        AlertModule,
+        NgxPaginationModule 
+        
     ],
     providers:[
         FilmeResolver
-    ]
+    ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class CinemaModule { }
