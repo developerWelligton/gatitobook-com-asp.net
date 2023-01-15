@@ -6,14 +6,15 @@
     >
 
     </i>
-    <a class="navbar-brand" [routerLink]="['cinema']">Cinema Management</a>
+    <a class="navbar-brand" [routerLink]="['cinema']" >Cinema Management</a>
     <app-menu #menu>
-      <ul class=""list-unstyled>
+      <ul style="list-style-type: none;">
         <li>
-          <a [routerLink]="['cinema','novo-filme']">Novo Filme</a>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-filme']" >Cadastrar Filme</a>
         </li>
         <li>
-          <a [routerLink]="['cinema','lista-filme']">Listar Filme</a>
+          <br>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-filme']">Lista de Filmes</a>
         </li>
       </ul>
     </app-menu>
