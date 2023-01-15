@@ -13,7 +13,7 @@ import { AlertModule, AlertConfig } from 'ngx-bootstrap/alert';
 import { AlertModalComponent } from './shared/alert-modal/alert-modal.component';
 
 @NgModule({
-  declarations: [AppComponent, AlertModalComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
