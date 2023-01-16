@@ -45,12 +45,22 @@
       <div class="form-group">
         <label for="genero">Duração do Filme (minutos)</label>
         <input type="number" class="form-control" id="duracaoFilme" placeholder="Duração" formControlName="duracao"
-          name="duracao">
+          name="duracao"
+          >
         <app-mensagem *ngIf="
           formularioFilme.get('duracao')?.errors?.required &&
-          formularioFilme.get('duracao')?.touched
+          formularioFilme.get('duracao')?.touched 
           " mensagem="Duraçao obrigatório">
         </app-mensagem>
+        <app-mensagem *ngIf="
+        formularioFilme.get('duracao')?.errors?.max  
+          " mensagem="Deve ter no max 600min">
+        </app-mensagem>
+        <app-mensagem *ngIf="
+        formularioFilme.get('duracao')?.errors?.min  
+          " mensagem="Minutos equivocados">
+        </app-mensagem>
+        
       </div>
       <div class="form-group">
         <label for="classificacaoEtaria">Classificação Etária (idade)</label>

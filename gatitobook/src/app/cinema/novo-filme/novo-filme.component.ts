@@ -25,7 +25,7 @@ export class NovoFilmeComponent implements OnInit {
       titulo: ['', [Validators.required]], 
       diretor: ['', [Validators.required]], 
       genero: ['', [Validators.required]], 
-      duracao: ['', [Validators.required]], 
+      duracao: ['', [Validators.required,Validators.max(600),Validators.min(0)]], 
       classificacaoEtaria: ['', [Validators.required]],   
     })
   }
