@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import { delay, map, switchMap } from 'rxjs/operators';
@@ -18,12 +19,17 @@ export class AtualizarFilmeComponent implements OnInit {
   formularioAtualizaFilme!: FormGroup;
   submitted = false; 
   id:any;
+
+  updateModalRef?: BsModalRef;
+  @ViewChild('updateModal') updateModal:any;
+
   constructor(private fb: FormBuilder, 
     private route:ActivatedRoute,
     private router: Router,
     private serviceAtualiza:AtualizarFilmeService,
     private spinner: NgxSpinnerService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private modalService:BsModalService) { }
 
   ngOnInit(): void {
       
@@ -56,13 +62,24 @@ export class AtualizarFilmeComponent implements OnInit {
     }
   }
 
-  cancelar(){
-    this.submitted = false;
-    this.formularioAtualizaFilme.reset();
-    console.log("Enviado")
-  }
+  
 
   hasError(field: string){
     return this.formularioAtualizaFilme.get(field)?.errors;
   }
+
+  
+  OnUpdate(){ 
+    this.updateModalRef = this.modalService.show(this.updateModal,{class:'modal-sm'})
+    //this.filmeSelecionado = filme;
+  }
+  OnConfirmUpdate(){ 
+    this.atualizar();
+    this.updateModalRef?.hide(); 
+  }
+  
+  OnDeclineUpdate(){
+    this.updateModalRef?.hide(); 
+  }
+
 }

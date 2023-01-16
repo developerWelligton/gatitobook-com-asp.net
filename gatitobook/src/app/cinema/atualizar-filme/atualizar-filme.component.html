@@ -62,17 +62,27 @@
         <button
         type="submit"
         class="btn btn-primary btn-block" 
-        (click)="atualizar()"
+        (click)="OnUpdate()"
       >
       
         Update Filme
       </button>
 
       <button
-         (click)="cancelar()"
+      [routerLink]="['../../../lista-filme']"
         class="btn btn-primary btn-block" 
       >
-        Cancel Filme
+        Voltar
       </button>
       </form>
     </div>
+
+    <ng-template #updateModal>
+      <div class="modal-body text-center">
+        <p>Tem certeza que deseja atualizar esse filme?</p>
+        <button type="button" class="btn btn-outline-danger" (click)="OnConfirmUpdate()">Sim</button>
+        {{''}}
+        <button type="button" class="btn btn-outline-success" (click)="OnDeclineUpdate()">Não</button>
+      </div>
+    </ng-template>
+     
