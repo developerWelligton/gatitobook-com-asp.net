@@ -1,6 +1,6 @@
-<header class="sticky-top">
-  <nav class="navbar navbar-light bg-white">
-    <i class="fa fa-bars mr-2"
+<header class="sticky-top mb-5">
+  <nav class="navbar navbar-dark bg-dark">
+    <i class="text-white fa fa-bars mr-2"
     (click)="menu.abreMenu()"
     (keyup.space)="menu.abreMenu()"
     >
@@ -22,14 +22,13 @@
         </li>
       </ul>
     </app-menu>
-    <div *ngIf="user$ | async as user">
+    <div *ngIf="user$ | async as user" class="text-white ">
       <div *ngIf="user.username; else login">
         <i class="fa fa-user-circle mr-1"> </i>
         <a class="mr-1">{{ user.username }}</a>
         <a (click)="logout()">Logout</a>
       </div>
-    </div>
-
+    </div> 
   </nav>
 
   <ng-template #login>
