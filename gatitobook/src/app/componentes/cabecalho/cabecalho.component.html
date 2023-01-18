@@ -10,11 +10,13 @@
     <app-menu #menu>
       <ul style="list-style-type: none;">
         <li>
-          <a class="btn btn-primary medio" [routerLink]="['cinema']" >Home</a>
+          <a class="btn btn-primary medio" [routerLink]="['cinema']" >Home</a> 
         </li>
         <li>
           <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-filme']" >Cadastrar Filme</a>
+          <ng-template [ngIf]="roleAdmin$">
+            <a class="btn btn-primary medio" [routerLink]="['cinema','novo-filme']" >Cadastrar Filme</a>
+          </ng-template> 
         </li>
         <li>
           <br>

@@ -10,7 +10,13 @@ import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
 export class CabecalhoComponent {
   user$ = this.usuarioService.retornaUsuario();
 
+  roleAdmin$ = this.usuarioService.retornaRoleAdmin();
+ 
   constructor(private usuarioService: UsuarioService, private router: Router) {}
+
+  roleX(){
+    console.log(this.roleAdmin$)
+  }
 
   logout() {
     this.usuarioService.logout();
