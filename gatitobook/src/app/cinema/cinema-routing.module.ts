@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component';
+import { AutenticacaoGuard } from '../autenticacao/autenticacao.guard';
+import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component'; 
 import { FilmeResolver } from './guards/filmeResolver';
  
 import { HomeCinemaComponent } from './home-cinema/home-cinema.component';
@@ -17,19 +18,23 @@ const routes: Routes = [
     component: NovoFilmeComponent,
     resolve:{
       filme:FilmeResolver
-    }
+    },
+    canActivate:[AutenticacaoGuard],
+    data:{permittedRoles:['admin']}
   },
   {
     path: 'lista-filme',
-    component: ListaFilmeComponent,
+    component: ListaFilmeComponent, 
   },
+  
   {
     path: 'lista-filme/filme/:id',
     component: AtualizarFilmeComponent,
     resolve:{
       filme:FilmeResolver
     }
-  },
+  }, 
+  
 ];
 
 @NgModule({

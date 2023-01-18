@@ -3,6 +3,7 @@ import { TokenService } from '../token.service';
 import { Usuario } from './usuario';
 import jwt_decode from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
+import { element } from 'protractor';
 
 @Injectable({
   providedIn: 'root',
@@ -51,19 +52,27 @@ export class UsuarioService {
   //Role Regular
   retornaRoleRegular(){
     let roleTeste = this.usuarioSubject.asObservable().subscribe(
-      (r) => {
-         
-        if(r.role == "regular"){
-          this.autorizado = true; 
-        }else{
-          this.autorizado = false;
-        } 
+      (r) => { 
+       console.log(r)
       },
       (error:any) => {
         console.log(error); 
       }
-    );
-    return this.autorizado;   
+    ); 
+  }
+  //*
+  roleMatch(allowedRoles: any[]): boolean {
+    var isMatch = false;
+    const token = this.tokenService.retornaToken();
+    const payLoad = JSON.parse(window.atob(token.split(".")[1]));
+    var userRole = payLoad['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']; 
+    if(userRole == allowedRoles[0]){
+      isMatch = true; 
+    } else{
+      isMatch = false;
+      alert(isMatch + " Pagina não autorizada")
+    } 
+    return isMatch;
   }
    
   salvaToken(token: string) {

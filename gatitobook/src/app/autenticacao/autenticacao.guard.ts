@@ -6,8 +6,23 @@ import { UsuarioService } from './usuario/usuario.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AutenticacaoGuard implements CanLoad {
+export class AutenticacaoGuard implements CanLoad, CanActivate {
   constructor(private usuarioService:UsuarioService, private router:Router){}
+  canActivate(
+    next:ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):boolean{
+    let roles = next.data['permittedRoles'] as Array<string>;
+    if(roles){
+      if(this.usuarioService.roleMatch(roles)) {
+        return true;
+      }else{
+        this.router.navigate(['cinema'])
+        return false;
+      }
+    }
+    return true;
+  }
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     if(!this.usuarioService.estaLogado()){
@@ -16,4 +31,6 @@ export class AutenticacaoGuard implements CanLoad {
     }
     return true;
   } 
+
+   
 }
