@@ -12,11 +12,12 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component';
 import { FilmeResolver } from './guards/filmeResolver';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ListaGerenteComponent } from './lista-gerente/lista-gerente.component';
  
 
 
 @NgModule({
-    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent],
+    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent],
     imports: [
         CommonModule,
         CinemaRoutingModule,

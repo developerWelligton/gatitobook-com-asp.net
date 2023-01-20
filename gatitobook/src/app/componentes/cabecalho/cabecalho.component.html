@@ -24,6 +24,10 @@
           <br>
           <a class="btn btn-primary medio" [routerLink]="['cinema','lista-filme']">Lista de Filmes</a>
         </li>
+        <li *ngIf="role$ == 'admin'" >
+          <br>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-gerente']">Lista de Gerente</a>
+        </li>
       </ul>
     </app-menu>
     <div *ngIf="user$ | async as user" class="text-white ">
