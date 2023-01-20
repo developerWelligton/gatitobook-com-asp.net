@@ -8,6 +8,8 @@ import { UsuarioService } from './usuario/usuario.service';
 })
 export class AutenticacaoGuard implements CanLoad, CanActivate {
   constructor(private usuarioService:UsuarioService, private router:Router){}
+  
+  
   canActivate(
     next:ActivatedRouteSnapshot,
     state: RouterStateSnapshot

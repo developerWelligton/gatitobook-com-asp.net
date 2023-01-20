@@ -11,7 +11,7 @@ import { element } from 'protractor';
 export class UsuarioService {
   private usuarioSubject = new BehaviorSubject<Usuario>({});
 
-  role: Usuario | undefined;
+  role: string | any;
   autorizado: boolean | any;
 
   constructor(private tokenService: TokenService) {
@@ -21,46 +21,19 @@ export class UsuarioService {
   }
 
   private decodificaJWT() {
-    const token = this.tokenService.retornaToken();
-    const usuario = jwt_decode(token) as Usuario;
+    const token = this.tokenService.retornaToken(); 
+    const usuario = jwt_decode(token) as Usuario; 
+    const payLoad = JSON.parse(window.atob(token.split(".")[1]));
+    var userRole = payLoad['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']; 
+    this.role = userRole;
+    alert(userRole)
     this.usuarioSubject.next(usuario); 
   }
 
   retornaUsuario() { 
     return this.usuarioSubject.asObservable(); 
   }
- 
-
-  //Role Admin
-  retornaRoleAdmin(){
-    let roleTeste = this.usuarioSubject.asObservable().subscribe(
-      (r) => {
-         
-        if(r.role == "admin"){
-          this.autorizado = true; 
-        }else{
-          this.autorizado = false;
-        } 
-      },
-      (error:any) => {
-        console.log(error); 
-      }
-    );
-    return this.autorizado;   
-  }
-
-  //Role Regular
-  retornaRoleRegular(){
-    let roleTeste = this.usuarioSubject.asObservable().subscribe(
-      (r) => { 
-       console.log(r)
-      },
-      (error:any) => {
-        console.log(error); 
-      }
-    ); 
-  }
-  //*
+  
   roleMatch(allowedRoles: any[]): boolean {
     var isMatch = false;
     const token = this.tokenService.retornaToken();

@@ -14,8 +14,11 @@
         </li>
         <li>
           <br> 
-            <a class="btn btn-primary medio" [routerLink]="['cinema','novo-filme']" >Cadastrar Filme</a>
-           
+           <ng-template [ngIf]="role$ == 'admin'"> 
+            <h1>{{role$}}</h1>
+            <a class="btn btn-primary medio" [routerLink]="['cinema','novo-filme']" >Cadastrar Filme</a> 
+          </ng-template>
+            
         </li>
         <li>
           <br>
