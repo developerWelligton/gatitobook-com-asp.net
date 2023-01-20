@@ -8,19 +8,19 @@
     </i>
     <a class="navbar-brand" [routerLink]="['cinema']" >Cinema Management</a>
     <app-menu #menu>
-      <ul style="list-style-type: none;">
-        <li>
+      <ul style="list-style-type: none;" *ngIf="user$ | async as user">
+        <li *ngIf="user.username; else vazio">
           <a class="btn btn-primary medio" [routerLink]="['cinema']" >Home</a> 
         </li>
-        <li>
+        <li *ngIf="user.username; else vazio">
           <br> 
-           <ng-template [ngIf]="role$ == 'admin'"> 
+           <div *ngIf="role$ == 'admin'"> 
             <h1>{{role$}}</h1>
             <a class="btn btn-primary medio" [routerLink]="['cinema','novo-filme']" >Cadastrar Filme</a> 
-          </ng-template>
+          </div>
             
         </li>
-        <li>
+        <li *ngIf="user.username; else vazio" >
           <br>
           <a class="btn btn-primary medio" [routerLink]="['cinema','lista-filme']">Lista de Filmes</a>
         </li>
@@ -38,6 +38,11 @@
   <ng-template #login>
     <span class="navbar-text">
       <a [routerLink]="['']">Login</a>
+    </span>
+  </ng-template>
+
+  <ng-template #vazio> 
+    <span> 
     </span>
   </ng-template>
 </header>
