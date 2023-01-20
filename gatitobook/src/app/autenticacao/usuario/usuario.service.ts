@@ -10,6 +10,7 @@ import { element } from 'protractor';
 })
 export class UsuarioService {
   private usuarioSubject = new BehaviorSubject<Usuario>({});
+  private usuarioRoleSubject = new BehaviorSubject<any>({});
 
   role: string | any;
   autorizado: boolean | any;
@@ -28,10 +29,16 @@ export class UsuarioService {
     this.role = userRole;
     alert(userRole)
     this.usuarioSubject.next(usuario); 
+    this.usuarioRoleSubject.next(userRole)
   }
 
   retornaUsuario() { 
     return this.usuarioSubject.asObservable(); 
+  }
+
+  retornaUsuarioRole() { 
+    
+    return this.usuarioRoleSubject.asObservable(); 
   }
   
   roleMatch(allowedRoles: any[]): boolean {

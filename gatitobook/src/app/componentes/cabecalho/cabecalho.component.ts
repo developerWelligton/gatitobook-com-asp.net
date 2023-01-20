@@ -7,10 +7,14 @@ import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
   templateUrl: './cabecalho.component.html',
   styleUrls: ['./cabecalho.component.css'],
 })
-export class CabecalhoComponent {
+export class CabecalhoComponent implements OnInit{
   user$ = this.usuarioService.retornaUsuario();
-  role$ = this.usuarioService.role;
+  role$: any;
   constructor(private usuarioService: UsuarioService, private router: Router) {}
+  
+  ngOnInit(): void {
+    this.usuarioService.retornaUsuarioRole().subscribe(r =>{ this.role$ = r}); 
+  }
  
 
   logout() {
