@@ -6,7 +6,7 @@
                 <h4>Filmes</h4>
                </div>
                <div class="float-right">
-                <button type="button" class="btn btn-primary" [routerLink]="['../novo-filme']">Novo Filme</button> 
+                <button *ngIf="role$ == 'admin'"  type="button" class="btn btn-primary" [routerLink]="['../novo-filme']">Novo Filme</button> 
               </div>
             </div>
             <div class="card-body">
@@ -30,9 +30,9 @@
                              
                             <td>
                                 <span class="float-right">
-                                    <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(filme.id)">Atualizar</button>
+                                    <button *ngIf="role$ == 'admin'" class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(filme.id)">Atualizar</button>
                                     {{''}}
-                                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="OnDelete(filme)">Remover</button>
+                                    <button *ngIf="role$ == 'admin'" class="btn btn-outline-danger mb-1 btn-sm" (click)="OnDelete(filme)">Remover</button>
                                 </span>
                             </td>
                         </tr>

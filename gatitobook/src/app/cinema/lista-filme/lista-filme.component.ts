@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { empty, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
+import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
 
 @Component({
   selector: 'app-lista-filme',
@@ -20,16 +21,19 @@ export class ListaFilmeComponent implements OnInit {
 
   filmeSelecionado:Filme | undefined
   p: number = 1;
+  role$: any;
   constructor(
     private listafilmeService: ListaFilmeService,
     private alertService: AlertService,
     private router: Router,
     private route: ActivatedRoute,
-    private modalService:BsModalService) {  
+    private modalService:BsModalService,
+    private usuarioService: UsuarioService) {  
     }
 
   ngOnInit(): void {
       this.filmes$ = this.listafilmeService.retornaFilmes();
+      this.usuarioService.retornaUsuarioRole().subscribe(r =>{ this.role$ = r}); 
   }
    
 
