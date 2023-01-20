@@ -20,7 +20,9 @@ export class AtualizarFilmeService {
     return this.http.get<any>(`${API_URL_FILMES}/filme/`+id); 
   }
   updateFilmeId(filme: Filme){
+
     const token = JSON.parse(this.tokenService.retornaToken());  
-    return this.http.put(`${API_URL_FILMES}/filme/`+ filme.id,filme); 
+    let head_obj2= new HttpHeaders().set("Authorization","bearer "+token)   
+    return this.http.put(`${API_URL_FILMES}/filme/`+ filme.id,filme,{headers:head_obj2}).pipe(take(1));
   }
 }
