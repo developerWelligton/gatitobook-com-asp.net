@@ -45,6 +45,10 @@ const routes: Routes = [
     path: 'novo-gerente',
     component: NovoGerenteComponent
   }, 
+  {
+    path: 'lista-gerente/gerente/:id',
+    component: AtualizarFilmeComponent, 
+  },
   
   
 ];

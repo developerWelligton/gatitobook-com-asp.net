@@ -68,7 +68,7 @@ export class ListaGerenteComponent implements OnInit {
   }
    
  onEdit(id:Gerente){ 
-  alert("ID GERENTE" + id)
+  this.router.navigate(['gerente',id],{relativeTo:this.route});
  }
 
    

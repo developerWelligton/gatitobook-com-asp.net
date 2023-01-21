@@ -14,11 +14,12 @@ import { FilmeResolver } from './guards/filmeResolver';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ListaGerenteComponent } from './lista-gerente/lista-gerente.component';
 import { NovoGerenteComponent } from './novo-gerente/novo-gerente.component';
+import { AtualizarGerenteComponent } from './atualizar-gerente/atualizar-gerente.component';
  
 
 
 @NgModule({
-    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent],
+    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent],
     imports: [
         CommonModule,
         CinemaRoutingModule,
