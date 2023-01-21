@@ -6,20 +6,32 @@
           <h4>Novo Endereço</h4>
         </div>
         <div class="float-right">
-          <button type="button" class="btn btn-primary" [routerLink]="['../lista-gerente']">Lista de Endereço</button>
+          <button type="button" class="btn btn-primary" [routerLink]="['../lista-endereco']">Lista de Endereço</button>
         </div>
       </div>
      
     <div class="card-body">
         <form >
         <div class="form-group">
-          <label for="nome">Nome do Endereço</label>
-          <input type="text" class="form-control" id="nome" placeholder="nome"
-          formControlName="nome"  
-            name="nome"> 
-       
+          <label for="nome">Nome do Logradouro</label>
+          <input type="text" class="form-control" id="logradouro" placeholder="logradouro"
+          formControlName="logradouro"  
+            name="logradouro">  
+        </div>
+
+        <div class="form-group">
+            <label for="nome">Nome do Bairro</label>
+            <input type="text" class="form-control" id="bairro" placeholder="bairro"
+            formControlName="bairro"  
+              name="bairro">  
         </div>
         
+        <div class="form-group">
+            <label for="nome">Numero</label>
+            <input type="text" class="form-control" id="numero" placeholder="numero"
+            formControlName="numero"  
+            name="numero">  
+        </div>
           
         <button type="submit" class="btn btn-primary btn-block">
           Salvar Endereço
