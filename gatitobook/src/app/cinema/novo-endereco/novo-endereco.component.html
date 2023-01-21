@@ -11,32 +11,32 @@
       </div>
      
     <div class="card-body">
-        <form >
-        <div class="form-group">
-          <label for="nome">Nome do Logradouro</label>
-          <input type="text" class="form-control" id="logradouro" placeholder="logradouro"
-          formControlName="logradouro"  
-            name="logradouro">  
-        </div>
+        <form [formGroup]="formularioEndereco" (submit)="cadastrar()">
+            <div class="form-group">
+            <label for="nome">Nome do Logradouro</label>
+            <input type="text" class="form-control" id="logradouro" placeholder="logradouro"
+            formControlName="logradouro"  
+                name="logradouro">  
+            </div>
 
-        <div class="form-group">
-            <label for="nome">Nome do Bairro</label>
-            <input type="text" class="form-control" id="bairro" placeholder="bairro"
-            formControlName="bairro"  
-              name="bairro">  
-        </div>
-        
-        <div class="form-group">
-            <label for="nome">Numero</label>
-            <input type="text" class="form-control" id="numero" placeholder="numero"
-            formControlName="numero"  
-            name="numero">  
-        </div>
-          
-        <button type="submit" class="btn btn-primary btn-block">
-          Salvar Endereço
-        </button>
-    </form>
+            <div class="form-group">
+                <label for="nome">Nome do Bairro</label>
+                <input type="text" class="form-control" id="bairro" placeholder="bairro"
+                formControlName="bairro"  
+                name="bairro">  
+            </div>
+            
+            <div class="form-group">
+                <label for="nome">Numero</label>
+                <input type="text" class="form-control" id="numero" placeholder="numero"
+                formControlName="numero"  
+                name="numero">  
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">
+            Salvar Endereço
+            </button>
+        </form>
     </div>
   </div>
   </div>
