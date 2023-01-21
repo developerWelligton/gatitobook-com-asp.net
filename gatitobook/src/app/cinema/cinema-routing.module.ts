@@ -8,6 +8,7 @@ import { HomeCinemaComponent } from './home-cinema/home-cinema.component';
 import { ListaFilmeComponent } from './lista-filme/lista-filme.component';
 import { ListaGerenteComponent } from './lista-gerente/lista-gerente.component';
 import { NovoFilmeComponent } from './novo-filme/novo-filme.component';
+import { NovoGerenteComponent } from './novo-gerente/novo-gerente.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'lista-gerente',
     component: ListaGerenteComponent
+  },
+  {
+    path: 'novo-gerente',
+    component: NovoGerenteComponent
   }, 
   
   
