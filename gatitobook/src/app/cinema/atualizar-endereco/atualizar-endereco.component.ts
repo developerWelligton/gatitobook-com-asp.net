@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { AlertService } from 'src/app/shared/alert.service';
+import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { AtualizarEnderecoService } from './atualizar-endereco.service';
 
 @Component({
@@ -35,6 +35,23 @@ export class AtualizarEnderecoComponent implements OnInit {
         id: [endereco.id, [Validators.required]] 
       })
     }
+
+    atualizar(){
+      this.submitted = true;
+      console.log(this.formularioEndereco.value)
+      if(this.formularioEndereco.valid){ 
+        this.atualizarEnderecoService.updateEnderecoId(this.formularioEndereco.value).subscribe(
+          success => {
+            this.alertService.showAlert("Endereço atualizado com sucesso!",AlertTypes.SUCCESS) 
+            this.router.navigateByUrl("cinema/lista-endereco")  
+          
+          },error => {this.alertService.showAlert("Endereco não atualizado!",AlertTypes.DANGER) 
+            
+            this.router.navigateByUrl("cinema/lista-endereco") 
+          }
+        );
+      }
+    }
     
   hasError(field: string){
     return this.formularioEndereco.get(field)?.errors;
@@ -46,7 +63,7 @@ export class AtualizarEnderecoComponent implements OnInit {
     //this.filmeSelecionado = filme;
   }
   OnConfirmUpdate(){ 
-    //this.atualizar();
+    this.atualizar();
     this.updateModalRef?.hide(); 
   }
   
