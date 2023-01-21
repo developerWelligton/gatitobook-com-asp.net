@@ -45,9 +45,6 @@ export class NovoFilmeComponent implements OnInit {
           this.spinner.hide()
         }
       );
-    }
-
-      
-     
+    } 
   }
 }
