@@ -64,7 +64,7 @@ export class ListaEnderecoComponent implements OnInit {
     this.alertService.showAlertDanger("Erro ao carregar gerente!")
   }
    
- onEdit(id:Endereco){ 
+ onEdit(id:Endereco){  
   this.router.navigate(['endereco',id],{relativeTo:this.route});
  } 
 

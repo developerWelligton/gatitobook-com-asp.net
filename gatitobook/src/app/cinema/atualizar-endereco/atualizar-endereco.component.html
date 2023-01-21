@@ -1,1 +1,67 @@
-<p>atualizar-endereco works!</p>
+<div class="container"> 
+    <h4 class="text-center">Atualizar Gerente</h4> 
+    
+    <form [formGroup]="formularioEndereco">
+        <div class="form-group">
+          <label for="titulo">Nome do Logradouro</label>
+          <input type="text" class="form-control" id="logradouro"  placeholder="logradouro" 
+          formControlName="logradouro"
+          name="logradouro" 
+          [ngClass]="{'is-invalid':submitted && hasError('logradouro')}"
+          >  
+          <div class="invalid-feedback" *ngIf="hasError('logradouro')">
+            Por favor informe um nome para o logradouro.
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="titulo">Nome do Bairro</label>
+            <input type="text" class="form-control" id="bairro"  placeholder="bairro" 
+            formControlName="bairro"
+            name="bairro" 
+            [ngClass]="{'is-invalid':submitted && hasError('bairro')}"
+            >  
+            <div class="invalid-feedback" *ngIf="hasError('bairro')">
+              Por favor informe um nome para o bairro.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="titulo">Numero</label>
+            <input type="text" class="form-control" id="numero"  placeholder="numero" 
+            formControlName="numero"
+            name="numero" 
+            [ngClass]="{'is-invalid':submitted && hasError('numero')}"
+            >  
+            <div class="invalid-feedback" *ngIf="hasError('logradouro')">
+              Por favor informe um nome para o logradouro.
+            </div>
+          </div>
+         
+        <button
+        type="submit"
+        class="btn btn-primary btn-block" 
+        (click)="OnUpdate()"
+      >
+      
+        Update Endereco
+      </button>
+
+      <button
+      [routerLink]="['../../../lista-endereco']"
+        class="btn btn-primary btn-block" 
+      >
+        Voltar
+      </button>
+      </form>
+    </div>
+
+    <ng-template #updateModal>
+      <div class="modal-body text-center">
+        <p>Tem certeza que deseja atualizar esse filme?</p>
+        <button type="button" class="btn btn-outline-danger" (click)="OnConfirmUpdate()">Sim</button>
+        {{''}}
+        <button type="button" class="btn btn-outline-success" (click)="OnDeclineUpdate()">Não</button>
+      </div>
+    </ng-template>
+     

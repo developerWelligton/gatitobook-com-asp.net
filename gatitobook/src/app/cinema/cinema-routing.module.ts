@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AutenticacaoGuard } from '../autenticacao/autenticacao.guard';
+import { AtualizarEnderecoComponent } from './atualizar-endereco/atualizar-endereco.component';
 import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component'; 
 import { AtualizarGerenteComponent } from './atualizar-gerente/atualizar-gerente.component';
+import { EnderecoResolver } from './guards/enderecoResolver';
 import { FilmeResolver } from './guards/filmeResolver';
 import { GerenteResolver } from './guards/gerenteResolver';
  
@@ -31,22 +33,21 @@ const routes: Routes = [
   {
     path: 'lista-filme',
     component: ListaFilmeComponent, 
-  },
-  
+  }, 
   {
     path: 'lista-filme/filme/:id',
     component: AtualizarFilmeComponent,
     resolve:{
       filme:FilmeResolver
     }
-  },  
+  }, 
   {
     path: 'lista-gerente',
     component: ListaGerenteComponent
   },
   {
     path: 'lista-endereco',
-    component: ListaEnderecoComponent
+    component: ListaEnderecoComponent, 
   },
   {
     path: 'novo-gerente',
@@ -61,6 +62,13 @@ const routes: Routes = [
     component: AtualizarGerenteComponent,
     resolve:{
       gerente:GerenteResolver
+    } 
+  },
+  {
+    path: 'lista-endereco/endereco/:id',
+    component: AtualizarEnderecoComponent,
+    resolve:{
+      endereco:EnderecoResolver
     } 
   },
   
