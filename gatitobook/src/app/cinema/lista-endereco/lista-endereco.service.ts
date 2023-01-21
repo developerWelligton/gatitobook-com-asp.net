@@ -16,7 +16,7 @@ export class ListaEnderecoService {
     private http: HttpClient,private tokenService: TokenService) { }
  
   
-  retornaGerentes():Observable<Endereco[]>{
+  retornaEnderecos():Observable<Endereco[]>{
     const token = JSON.parse(this.tokenService.retornaToken());  
     let head_obj2= new HttpHeaders().set("Authorization","bearer "+token)
     return this.http.get<Endereco[]>(`${API_URL_FILMES}/endereco`,{headers:head_obj2}); 
