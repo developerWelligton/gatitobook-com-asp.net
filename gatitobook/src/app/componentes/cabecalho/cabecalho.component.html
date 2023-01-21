@@ -30,8 +30,13 @@
         </li>
         <li *ngIf="role$ == 'admin'" >
           <br>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-endereco']">Lista de Endereco</a>
+        </li>
+        <li *ngIf="role$ == 'admin'" >
+          <br>
           <a class="btn btn-primary medio" [routerLink]="['cinema','novo-gerente']">Cadadastrar Gerente</a>
         </li>
+        
       </ul>
     </app-menu>
     <div *ngIf="user$ | async as user" class="text-white ">
