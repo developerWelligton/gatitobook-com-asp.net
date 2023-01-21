@@ -30,8 +30,7 @@ export class NovoEnderecoComponent implements OnInit {
     })
   }
 
-  cadastrar() {
-    console.error("ERRO")
+  cadastrar() { 
     this.spinner.show();
     if(this.formularioEndereco.valid){  
       const novoEndereco = this.formularioEndereco.getRawValue() as Endereco;
