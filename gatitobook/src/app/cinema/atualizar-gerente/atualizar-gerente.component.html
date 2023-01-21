@@ -1,1 +1,43 @@
-<p>atualizar-gerente works!</p>
+<div class="container"> 
+    <h4 class="text-center">Atualizar Gerente</h4> 
+    
+    <form [formGroup]="formularioGerenteFilme">
+        <div class="form-group">
+          <label for="titulo">Nome do Gerente</label>
+          <input type="text" class="form-control" id="nome"  placeholder="nome" 
+          formControlName="nome"
+          name="nome" 
+          [ngClass]="{'is-invalid':submitted && hasError('nome')}"
+          >  
+          <div class="invalid-feedback" *ngIf="hasError('nome')">
+            Por favor informe um nome para o gerente.
+          </div>
+        </div>
+         
+        <button
+        type="submit"
+        class="btn btn-primary btn-block" 
+        (click)="OnUpdate()"
+      >
+      
+        Update Filme
+      </button>
+
+      <button
+      [routerLink]="['../../../lista-filme']"
+        class="btn btn-primary btn-block" 
+      >
+        Voltar
+      </button>
+      </form>
+    </div>
+
+    <ng-template #updateModal>
+      <div class="modal-body text-center">
+        <p>Tem certeza que deseja atualizar esse filme?</p>
+        <button type="button" class="btn btn-outline-danger" (click)="OnConfirmUpdate()">Sim</button>
+        {{''}}
+        <button type="button" class="btn btn-outline-success" (click)="OnDeclineUpdate()">Não</button>
+      </div>
+    </ng-template>
+     

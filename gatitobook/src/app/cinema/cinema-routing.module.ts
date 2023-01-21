@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AutenticacaoGuard } from '../autenticacao/autenticacao.guard';
 import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component'; 
+import { AtualizarGerenteComponent } from './atualizar-gerente/atualizar-gerente.component';
 import { FilmeResolver } from './guards/filmeResolver';
+import { GerenteResolver } from './guards/gerenteResolver';
  
 import { HomeCinemaComponent } from './home-cinema/home-cinema.component';
 import { ListaFilmeComponent } from './lista-filme/lista-filme.component';
@@ -47,7 +49,10 @@ const routes: Routes = [
   }, 
   {
     path: 'lista-gerente/gerente/:id',
-    component: AtualizarFilmeComponent, 
+    component: AtualizarGerenteComponent,
+    resolve:{
+      gerente:GerenteResolver
+    } 
   },
   
   
