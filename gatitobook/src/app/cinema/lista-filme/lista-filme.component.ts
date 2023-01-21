@@ -17,11 +17,11 @@ export class ListaFilmeComponent implements OnInit {
 
   filmes$: Observable<Filme[]> | undefined 
   deleteModalRef?: BsModalRef;
-  @ViewChild('deleteModal') deleteModal:any;
-
+  @ViewChild('deleteModal') deleteModal:any; 
   filmeSelecionado:Filme | undefined
   p: number = 1;
   role$: any;
+  
   constructor(
     private listafilmeService: ListaFilmeService,
     private alertService: AlertService,
