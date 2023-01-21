@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { empty, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
-import { AlertService } from 'src/app/shared/alert.service';
+import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { Endereco } from '../novo-endereco/Endereco';
 import { ListaEnderecoService } from './lista-endereco.service';
 
@@ -15,6 +16,9 @@ import { ListaEnderecoService } from './lista-endereco.service';
 export class ListaEnderecoComponent implements OnInit {
 
   endereco$: Observable<Endereco[]> | undefined 
+  deleteModalRef?: BsModalRef;
+  @ViewChild('deleteModal') deleteModal:any;
+  enderecoSelecionado:Endereco | undefined  
 
   constructor(
     private listaEnderecoService: ListaEnderecoService,
@@ -28,6 +32,41 @@ export class ListaEnderecoComponent implements OnInit {
   ngOnInit(): void { 
     this.endereco$ = this.listaEnderecoService.retornaEnderecos(); 
   }
+
+  OnDelete(endereco:Endereco){ 
+    this.deleteModalRef = this.modalService.show(this.deleteModal,{class:'modal-sm'})
+    this.enderecoSelecionado = endereco;  
+  }
+
+  OnConfirmDelete(){  
+    this.listaEnderecoService.remove(this.enderecoSelecionado?.id).subscribe(  
+      success => this.OnRefresh(),
+      error => this.handlerError()
+    );
+    this.deleteModalRef?.hide(); 
+  }
+  
+  OnDeclineDelete(){
+    this.deleteModalRef?.hide(); 
+  }
+
+  OnRefresh(){
+    this.alertService.showAlert("Endereco deletado",AlertTypes.SUCCESS)
+     this.endereco$ = this.listaEnderecoService.retornaEnderecos().pipe(
+      catchError(error => {
+        console.error(error);
+        this.handlerError();
+        return empty();
+      })
+    )
+  }
+  handlerError() {
+    this.alertService.showAlertDanger("Erro ao carregar gerente!")
+  }
+   
+ onEdit(id:Endereco){ 
+  this.router.navigate(['endereco',id],{relativeTo:this.route});
+ } 
 
 }
 
