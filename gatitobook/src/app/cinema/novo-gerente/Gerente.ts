@@ -1,4 +1,3 @@
-export interface Gerente {
-    id?: Int16Array | any;
+export interface Gerente { 
     nome?: string | undefined; 
 }

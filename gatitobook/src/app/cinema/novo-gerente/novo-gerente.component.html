@@ -11,12 +11,19 @@
       </div>
      
     <div class="card-body">
-        <form>
+        <form [formGroup]="formularioGerente" (submit)="cadastrar()">
         <div class="form-group">
-          <label for="titulo">Nome do Gerente</label>
-          <input type="text" class="form-control" id="nomeGerente" placeholder="nomeGerente"  
-            name="nomeGerente"> 
+          <label for="nome">Nome do Gerente</label>
+          <input type="text" class="form-control" id="nome" placeholder="nome"
+          formControlName="nome"  
+            name="nome"> 
+            <app-mensagem *ngIf="
+            formularioGerente.get('nome')?.errors?.required &&
+            formularioGerente.get('nome')?.touched
+          " mensagem="Título obrigatório">
+        </app-mensagem>
         </div>
+        
           
         <button type="submit" class="btn btn-primary btn-block">
           Salvar Gerente
