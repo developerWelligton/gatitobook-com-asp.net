@@ -30,7 +30,8 @@ export class AtualizarGerenteComponent implements OnInit {
   ngOnInit(): void {
     const gerente = this.route.snapshot.data['gerente']
     this.formularioGerenteFilme = this.fb.group({ 
-      nome: [gerente.nome, [Validators.required]],  
+      nome: [gerente.nome, [Validators.required]],
+      id: [gerente.id, [Validators.required]],  
     })
   }
 
