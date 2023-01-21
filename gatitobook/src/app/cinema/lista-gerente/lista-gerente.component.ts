@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
+import { empty, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
 import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { Gerente } from '../novo-gerente/Gerente';
@@ -14,7 +15,7 @@ import { ListaGerenteService } from './lista-gerente.service';
 })
 export class ListaGerenteComponent implements OnInit {
 
-  Gerente$: Observable<Gerente[]> | undefined
+  gerente$: Observable<Gerente[]> | undefined
   deleteModalRef?: BsModalRef;
   @ViewChild('deleteModal') deleteModal:any;
   gerenteSelecionado:Gerente | undefined 
@@ -31,7 +32,7 @@ export class ListaGerenteComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      this.Gerente$ = this.listaGerenteService.retornaGerentes(); 
+      this.gerente$ = this.listaGerenteService.retornaGerentes(); 
   }
 
   OnDelete(gerente:Gerente){
@@ -54,7 +55,13 @@ export class ListaGerenteComponent implements OnInit {
 
   OnRefresh(){
     this.alertService.showAlert("Gerente deletado",AlertTypes.SUCCESS)
-     
+     this.gerente$ = this.listaGerenteService.retornaGerentes().pipe(
+      catchError(error => {
+        console.error(error);
+        this.handlerError();
+        return empty();
+      })
+    )
   }
   handlerError() {
     this.alertService.showAlertDanger("Erro ao carregar gerente!")
