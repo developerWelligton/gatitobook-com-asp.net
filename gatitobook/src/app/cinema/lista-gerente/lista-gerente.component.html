@@ -10,15 +10,16 @@
               </div>
             </div>
             <div class="card-body">
-                <table class="table table-hover">
+                <table class="table table-hover" *ngIf="Gerente$ | async as gerente">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Nome</th>  
+                            <th>Nome</th> 
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <tr *ngFor="let gerente of gerente ">
+                            <td>{{gerente.nome}}</td> 
+                        </tr>
                     </tbody>
                 </table> 
             </div>
