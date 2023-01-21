@@ -1,0 +1,30 @@
+<div class="container">
+    <h4 class="text-center">Cadastrar Endereço</h4>
+    <div class="card">
+      <div class="card-header">
+        <div class="float-start">
+          <h4>Novo Endereço</h4>
+        </div>
+        <div class="float-right">
+          <button type="button" class="btn btn-primary" [routerLink]="['../lista-gerente']">Lista de Endereço</button>
+        </div>
+      </div>
+     
+    <div class="card-body">
+        <form >
+        <div class="form-group">
+          <label for="nome">Nome do Endereço</label>
+          <input type="text" class="form-control" id="nome" placeholder="nome"
+          formControlName="nome"  
+            name="nome"> 
+       
+        </div>
+        
+          
+        <button type="submit" class="btn btn-primary btn-block">
+          Salvar Endereço
+        </button>
+    </form>
+    </div>
+  </div>
+  </div>

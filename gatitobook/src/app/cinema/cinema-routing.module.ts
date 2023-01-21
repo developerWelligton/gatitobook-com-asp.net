@@ -10,6 +10,7 @@ import { HomeCinemaComponent } from './home-cinema/home-cinema.component';
 import { ListaEnderecoComponent } from './lista-endereco/lista-endereco.component';
 import { ListaFilmeComponent } from './lista-filme/lista-filme.component';
 import { ListaGerenteComponent } from './lista-gerente/lista-gerente.component';
+import { NovoEnderecoComponent } from './novo-endereco/novo-endereco.component';
 import { NovoFilmeComponent } from './novo-filme/novo-filme.component';
 import { NovoGerenteComponent } from './novo-gerente/novo-gerente.component';
 
@@ -51,6 +52,10 @@ const routes: Routes = [
     path: 'novo-gerente',
     component: NovoGerenteComponent
   }, 
+  {
+    path: 'novo-endereco',
+    component: NovoEnderecoComponent
+  },
   {
     path: 'lista-gerente/gerente/:id',
     component: AtualizarGerenteComponent,

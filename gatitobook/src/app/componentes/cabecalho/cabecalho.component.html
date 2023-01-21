@@ -34,7 +34,11 @@
         </li>
         <li *ngIf="role$ == 'admin'" >
           <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-gerente']">Cadadastrar Gerente</a>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-gerente']">Cadastrar Gerente</a>
+        </li>
+        <li *ngIf="role$ == 'admin'" >
+          <br>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-endereco']">Cadastrat Endereço</a>
         </li>
         
       </ul>
