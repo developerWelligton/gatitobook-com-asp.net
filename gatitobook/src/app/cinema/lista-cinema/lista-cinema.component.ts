@@ -68,6 +68,9 @@ export class ListaCinemaComponent implements OnInit {
     this.alertService.showAlertDanger("Erro ao carregar cinema!")
   }
    
+  onEdit(id:any){  
+    this.router.navigate(['cinema',id],{relativeTo:this.route});
+   } 
  
 
 }

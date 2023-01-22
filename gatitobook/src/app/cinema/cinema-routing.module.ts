@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AutenticacaoGuard } from '../autenticacao/autenticacao.guard';
+import { AtualizarCinemaComponent } from './atualizar-cinema/atualizar-cinema.component';
 import { AtualizarEnderecoComponent } from './atualizar-endereco/atualizar-endereco.component';
 import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component'; 
 import { AtualizarGerenteComponent } from './atualizar-gerente/atualizar-gerente.component';
@@ -80,6 +81,11 @@ const routes: Routes = [
     resolve:{
       endereco:EnderecoResolver
     } 
+  },
+
+  {
+    path: 'lista-cinema/cinema/:id',
+    component: AtualizarCinemaComponent, 
   },
   
   
