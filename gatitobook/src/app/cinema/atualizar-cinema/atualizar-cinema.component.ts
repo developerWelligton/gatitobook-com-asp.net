@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
-import { AlertService } from 'src/app/shared/alert.service';
+import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { ListaEnderecoService } from '../lista-endereco/lista-endereco.service';
 import { ListaGerenteComponent } from '../lista-gerente/lista-gerente.component';
 import { ListaGerenteService } from '../lista-gerente/lista-gerente.service';
@@ -23,11 +23,13 @@ export class AtualizarCinemaComponent implements OnInit {
   submitted = false; 
   id:any;
   updateModalRef?: BsModalRef;
-  @ViewChild('updateModal') updateModal:any;
-  endereco$: any; 
+  @ViewChild('updateModal') updateModal:any; 
+
+  endereco$:  Observable<Endereco[]> | undefined
   gerente$: Observable<Gerente[]> | undefined
   gerenteId: number | undefined;
-
+  enderecoId: number | undefined;
+ 
  
  
 
@@ -46,17 +48,18 @@ export class AtualizarCinemaComponent implements OnInit {
       this.endereco$ = this.listaEnderecoService.retornaEnderecos(); 
       this.gerente$ = this.listaGerenteService.retornaGerentes();
       this.gerenteId = cinema.gerente.id;
+      this.enderecoId = cinema.endereco.id;
       this.formularioCinema = this.formBuilder.group({
         Nome: [cinema.nome, [Validators.required]] ,
-        EnderecoId: [cinema.endereco.id, [Validators.required]] ,
+        EnderecoId: [this.enderecoId, [Validators.required]] ,
         GerenteId: [this.gerenteId, [Validators.required]]    
       }) 
     }
 
-    OnUpdate(){ 
-      this.updateModalRef = this.modalService.show(this.updateModal,{class:'modal-sm'})
-      //this.filmeSelecionado = filme;
-    }
+OnUpdate(){  
+  this.updateModalRef = this.modalService.show(this.updateModal,{class:'modal-sm'})
+    //this.filmeSelecionado = filme;
+  }
 
     changeEndereco(event:any) {
       console.log(event.target.value);
@@ -64,5 +67,35 @@ export class AtualizarCinemaComponent implements OnInit {
 
     changeGerente(event:any) {
       console.log(event.target.value); 
+    }
+
+    OnConfirmUpdate(){ 
+      this.atualizar();
+      this.updateModalRef?.hide(); 
+    }
+    
+    OnDeclineUpdate(){
+      this.updateModalRef?.hide(); 
+    } 
+
+    atualizar(){
+      this.submitted = true;
+      console.log(this.formularioCinema.value)
+      if(this.formularioCinema.valid){ 
+        this.atualizarCinemaService.updateCinemaId(this.formularioCinema.value).subscribe(
+          success => {
+            this.alertService.showAlert("cinema atualizado com sucesso!",AlertTypes.SUCCESS) 
+            this.router.navigateByUrl("cinema/lista-cinema")  
+          
+          },error => {this.alertService.showAlert("Cinema não atualizado!",AlertTypes.DANGER) 
+            
+            this.router.navigateByUrl("cinema/lista-cinema") 
+          }
+        );
+      }
+    }
+
+    hasError(field: string){
+      return this.formularioCinema.get(field)?.errors;
     }
 }
