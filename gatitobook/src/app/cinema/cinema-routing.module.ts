@@ -9,6 +9,7 @@ import { FilmeResolver } from './guards/filmeResolver';
 import { GerenteResolver } from './guards/gerenteResolver';
  
 import { HomeCinemaComponent } from './home-cinema/home-cinema.component';
+import { ListaCinemaComponent } from './lista-cinema/lista-cinema.component';
 import { ListaEnderecoComponent } from './lista-endereco/lista-endereco.component';
 import { ListaFilmeComponent } from './lista-filme/lista-filme.component';
 import { ListaGerenteComponent } from './lista-gerente/lista-gerente.component';
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'lista-endereco',
     component: ListaEnderecoComponent, 
+  },
+  {
+    path: 'lista-cinema',
+    component: ListaCinemaComponent, 
   },
   {
     path: 'novo-gerente',

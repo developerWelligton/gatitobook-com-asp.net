@@ -40,6 +40,10 @@
           <br>
           <a class="btn btn-primary medio" [routerLink]="['cinema','novo-cinema']">Cadastrar Cinema</a>
         </li>
+        <li *ngIf="role$ == 'admin'" >
+          <br>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-cinema']">Listar Cinema</a>
+        </li>
         
       </ul>
     </app-menu>
