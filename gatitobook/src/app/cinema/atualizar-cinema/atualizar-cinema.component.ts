@@ -24,8 +24,9 @@ export class AtualizarCinemaComponent implements OnInit {
   id:any;
   updateModalRef?: BsModalRef;
   @ViewChild('updateModal') updateModal:any;
-  endereco$: any;
-  gerente$: any;
+  endereco$: any; 
+  gerente$: Observable<Gerente[]> | undefined
+  gerenteId: number | undefined;
 
  
  
@@ -44,12 +45,24 @@ export class AtualizarCinemaComponent implements OnInit {
       const cinema = this.route.snapshot.data['cinema']
       this.endereco$ = this.listaEnderecoService.retornaEnderecos(); 
       this.gerente$ = this.listaGerenteService.retornaGerentes();
-
+      this.gerenteId = cinema.gerente.id;
       this.formularioCinema = this.formBuilder.group({
         Nome: [cinema.nome, [Validators.required]] ,
         EnderecoId: [cinema.endereco.id, [Validators.required]] ,
-        GerenteId: [cinema.gerente.id, [Validators.required]]    
+        GerenteId: [this.gerenteId, [Validators.required]]    
       }) 
     }
 
+    OnUpdate(){ 
+      this.updateModalRef = this.modalService.show(this.updateModal,{class:'modal-sm'})
+      //this.filmeSelecionado = filme;
+    }
+
+    changeEndereco(event:any) {
+      console.log(event.target.value);
+    }
+
+    changeGerente(event:any) {
+      console.log(event.target.value); 
+    }
 }

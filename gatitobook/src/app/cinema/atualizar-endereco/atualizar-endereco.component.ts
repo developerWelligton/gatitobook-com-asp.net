@@ -70,6 +70,14 @@ export class AtualizarEnderecoComponent implements OnInit {
   OnDeclineUpdate(){
     this.updateModalRef?.hide(); 
   } 
+
+  changeEndereco(event:any) {
+    console.log(event.target.value);
+  }
+
+  changeGerente(event:any) {
+    console.log(event.target.value); 
+  }
   
 
 }
