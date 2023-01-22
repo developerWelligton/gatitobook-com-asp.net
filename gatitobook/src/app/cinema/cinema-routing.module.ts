@@ -5,6 +5,7 @@ import { AtualizarCinemaComponent } from './atualizar-cinema/atualizar-cinema.co
 import { AtualizarEnderecoComponent } from './atualizar-endereco/atualizar-endereco.component';
 import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component'; 
 import { AtualizarGerenteComponent } from './atualizar-gerente/atualizar-gerente.component';
+import { CinemaResolver } from './guards/cinemaResolver';
 import { EnderecoResolver } from './guards/enderecoResolver';
 import { FilmeResolver } from './guards/filmeResolver';
 import { GerenteResolver } from './guards/gerenteResolver';
@@ -85,7 +86,10 @@ const routes: Routes = [
 
   {
     path: 'lista-cinema/cinema/:id',
-    component: AtualizarCinemaComponent, 
+    component: AtualizarCinemaComponent,
+    resolve:{
+      cinema:CinemaResolver
+    }  
   },
   
   
