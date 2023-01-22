@@ -3,13 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
-import { AlertService } from 'src/app/shared/alert.service';
+import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { ListaEnderecoService } from '../lista-endereco/lista-endereco.service';
 import { ListaGerenteComponent } from '../lista-gerente/lista-gerente.component';
 import { ListaGerenteService } from '../lista-gerente/lista-gerente.service';
 import { Endereco } from '../novo-endereco/Endereco';
 import { Gerente } from '../novo-gerente/Gerente';
 import { Cinema } from './Cinema';
+import { NovoCinemaService } from './novo-cinema.service';
 
 @Component({
   selector: 'app-novo-cinema',
@@ -28,7 +29,8 @@ export class NovoCinemaComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private listaGerenteService: ListaGerenteService ,
-    private listaEnderecoService: ListaEnderecoService, 
+    private listaEnderecoService: ListaEnderecoService,
+    private novoCinemaService:  NovoCinemaService,
     private spinner: NgxSpinnerService,
     private alertService: AlertService) { }
 
@@ -49,6 +51,18 @@ export class NovoCinemaComponent implements OnInit {
       this.spinner.show();
       if(this.formularioCinema.valid){  
         const novoCinema = this.formularioCinema.getRawValue() as Cinema; 
+        this.novoCinemaService.cadastraNovoCinema(novoCinema).subscribe(
+          () => {
+            this.alertService.showAlert("Cinema cadastrado com sucesso!",AlertTypes.SUCCESS)
+            this.spinner.hide(); 
+            this.formularioCinema.reset()
+          },
+          (error:any) => {
+            console.log(error);
+            this.alertService.showAlert("Endereço não cadastrado!",AlertTypes.DANGER)
+            this.spinner.hide()
+          }
+        );
       }
     }
     changeEndereco(event:any) {
