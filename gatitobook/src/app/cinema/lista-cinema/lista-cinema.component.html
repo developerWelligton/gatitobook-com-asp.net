@@ -10,7 +10,7 @@
               </div>
             </div>
             <div class="card-body">
-                <table class="table table-hover">
+                <table class="table table-hover" *ngIf="cinema$ | async as cinema">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -20,11 +20,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td> 
-                            <td></td> 
-                            <td></td> 
-                            <td></td> 
+                        <tr *ngFor="let cinema of cinema"> 
+                            <td> </td>
+                            <td>{{cinema.Nome}}</td> 
+                            <td>{{cinema.Nome}}</td> 
+                            <!--<td>{{endereco.Nome}}{{cinema.EnderecoId}}</td>  -->
+                            <!--<td>{{endereco.Nome}}{{cinema.EnderecoId}}</td>  -->
+                            <td></td>  
                             <td>
                                 <span class="float-right">
                                     <button  class="btn btn-outline-warning mb-1 btn-sm">Atualizar</button>
