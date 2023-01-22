@@ -1,1 +1,54 @@
-<p>lista-cinema works!</p>
+<div class="container"> 
+    <h4 class="text-center">Listar Cinema</h4> 
+        <div class="card">
+          <div class="card-header"> 
+            <div class="float-start">
+                <h4>Cinemas</h4>
+               </div>
+               <div class="float-right">
+                <button  type="button" class="btn btn-primary" [routerLink]="['../novo-cinema']">Novo Cinema</button> 
+              </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Bairro</th>
+                            <th>Gerente</th>  
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td> 
+                            <td></td> 
+                            <td></td> 
+                            <td></td> 
+                            <td>
+                                <span class="float-right">
+                                    <button  class="btn btn-outline-warning mb-1 btn-sm">Atualizar</button>
+                                    {{''}}
+                                    <button   class="btn btn-outline-danger mb-1 btn-sm">Remover</button>
+                                </span>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table> 
+            </div> 
+        </div>
+    </div> 
+<br>
+
+<ng-template #deleteModal>
+    <div class="modal-body text-center">
+      <p>Tem certeza que deseja remover esse gerebte?</p>
+      <button type="button" class="btn btn-outline-danger">Sim</button>
+      {{''}}
+      <button type="button" class="btn btn-outline-success">Não</button>
+    </div>
+  </ng-template>
+ 
+ 
+ 
