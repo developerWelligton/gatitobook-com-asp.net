@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
 import { AlertService } from 'src/app/shared/alert.service';
 import { Cinema } from '../novo-cinema/Cinema';
+import { Cinemas } from './lista-cinema.interface';
 import { ListaCinemaService } from './lista-cinema.service';
 
 @Component({
@@ -15,7 +16,8 @@ import { ListaCinemaService } from './lista-cinema.service';
 export class ListaCinemaComponent implements OnInit {
 
   
-  cinema$: Observable<Cinema[]> | undefined  
+  cinema$: Observable<Cinemas[]> | undefined  
+  public cinemas!: Cinemas[]
 
   constructor(
     private listaCinemaService: ListaCinemaService,
@@ -27,8 +29,8 @@ export class ListaCinemaComponent implements OnInit {
     }
 
   ngOnInit(): void { 
-    this.cinema$ = this.listaCinemaService.retornaCinemas(); 
-    console.log(this.cinema$.subscribe(r => {console.log(r)}))
+    this.cinema$ = this.listaCinemaService.retornaCinemas();   
   }
+ 
 
 }

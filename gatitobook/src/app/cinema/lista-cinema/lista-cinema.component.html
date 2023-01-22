@@ -20,13 +20,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let cinema of cinema"> 
-                            <td> </td>
-                            <td>{{cinema.Nome}}</td> 
-                            <td>{{cinema.Nome}}</td> 
-                            <!--<td>{{endereco.Nome}}{{cinema.EnderecoId}}</td>  -->
-                            <!--<td>{{endereco.Nome}}{{cinema.EnderecoId}}</td>  -->
-                            <td></td>  
+                        <tr *ngFor="let cinema of cinema">  
+                            <td>{{cinema.id}}</td> 
+                            <td>{{cinema.nome}}</td>
+                            <td>{{cinema.endereco.bairro}}</td> 
+                            <td>{{cinema.gerente.nome}}</td>  
                             <td>
                                 <span class="float-right">
                                     <button  class="btn btn-outline-warning mb-1 btn-sm">Atualizar</button>
