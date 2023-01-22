@@ -1,1 +1,49 @@
-<p>atualizar-cinema works!</p>
+<div class="container">
+    <h4 class="text-center">Atualizar Cinema</h4>
+    <div class="card">
+      <div class="card-header">
+        <div class="float-start">
+          <h4>Atualizar Cinema</h4>
+        </div>
+        <div class="float-right">
+          <button type="button" class="btn btn-primary" [routerLink]="['../lista-cinema']">Lista de Cinema</button>
+        </div>
+      </div>
+     
+    <div class="card-body">
+        <form>
+        <div class="form-group">
+          <label for="nome">Nome do Cinema</label>
+          <input type="text" class="form-control" id="nome" placeholder="nome"
+          formControlName="Nome"  
+          name="nome">  
+        </div> 
+
+        <div class="form-group">
+            <label for="gerente">Gerente:</label>
+            <select formControlName="GerenteId" 
+            class="form-control" 
+           >
+                <option disabled>Select Gerente</option>
+                <option>Choose Gerente</option> 
+            </select>
+             
+        </div>
+        
+        <div class="form-group">
+            <label for="endereco">Endereco:</label>
+            <select formControlName="EnderecoId" 
+            class="form-control" 
+            >
+                <option disabled>Select Endereco</option>
+                <option>Choose Endereco</option> 
+            </select> 
+        </div>
+          
+        <button type="submit" class="btn btn-primary btn-block">
+          Alterar Cinema
+        </button>
+    </form>
+    </div>
+  </div>
+  </div>
