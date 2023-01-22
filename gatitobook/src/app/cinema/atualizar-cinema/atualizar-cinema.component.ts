@@ -50,6 +50,7 @@ export class AtualizarCinemaComponent implements OnInit {
       this.gerenteId = cinema.gerente.id;
       this.enderecoId = cinema.endereco.id;
       this.formularioCinema = this.formBuilder.group({
+        Id: [cinema.id, [Validators.required]] ,
         Nome: [cinema.nome, [Validators.required]] ,
         EnderecoId: [this.enderecoId, [Validators.required]] ,
         GerenteId: [this.gerenteId, [Validators.required]]    

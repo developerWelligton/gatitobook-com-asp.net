@@ -20,8 +20,7 @@
           [ngClass]="{'is-invalid':submitted && hasError('nome')}">
           <div class="invalid-feedback" *ngIf="hasError('nome')">
             Por favor informe um nome para o cinema.
-          </div> 
-           
+          </div>  
         </div> 
 
         <div class="form-group">
@@ -30,7 +29,8 @@
             class="form-control" 
             (change)=" changeGerente($event)"
             *ngIf="gerente$ | async as gerente"
-            [(ngModel)]="gerenteId">
+            [(ngModel)]="gerenteId"
+            >
                 <option disabled>Select Gerente</option>
                 <option>Choose Gerente</option>
                 <option *ngFor="let gerente of gerente" [ngValue]="gerente.id">{{gerente.nome}}</option>

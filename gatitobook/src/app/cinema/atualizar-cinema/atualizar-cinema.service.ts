@@ -16,7 +16,7 @@ export class AtualizarCinemaService {
  
 
   constructor(private http: HttpClient,private tokenService: TokenService) { }
-
+  cinemaObj: Cinema | any;
   getCinemaId(id: any){
     const token = JSON.parse(this.tokenService.retornaToken());   
     return this.http.get<any>(`${API_URL_FILMES}/cinema/`+id); 
@@ -25,7 +25,7 @@ export class AtualizarCinemaService {
   updateCinemaId(cinema: Cinema){
 
     const token = JSON.parse(this.tokenService.retornaToken());  
-    let head_obj2= new HttpHeaders().set("Authorization","bearer "+token) 
+    let head_obj2= new HttpHeaders().set("Authorization","bearer "+token)  
     return this.http.put(`${API_URL_FILMES}/cinema/`+ cinema.Id,cinema,{headers:head_obj2}).pipe(take(1));
   }
-}
+  } 
