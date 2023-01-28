@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
+import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
 import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { Cinemas } from '../lista-cinema/lista-cinema.interface';
 import { ListaCinemaService } from '../lista-cinema/lista-cinema.service';
@@ -30,6 +31,8 @@ export class AtualizarSessoesComponent implements OnInit {
   cinemaId: number | undefined;
   sessaoId: number | undefined;
 
+  role$: any;
+
   constructor(private formBuilder: FormBuilder, 
     private route:ActivatedRoute,
     private router: Router,
@@ -38,13 +41,16 @@ export class AtualizarSessoesComponent implements OnInit {
     private alertService: AlertService,
     private modalService:BsModalService,
     private listaFilmeService: ListaFilmeService,
-    private listaCinemaService: ListaCinemaService) { }
+    private listaCinemaService: ListaCinemaService,
+    private usuarioService: UsuarioService) { }
  
  
   ngOnInit(): void {
     const sessao = this.route.snapshot.data['sessao'];
     this.filme$ = this.listaFilmeService.retornaFilmes(); 
     this.cinema$ = this.listaCinemaService.retornaCinemas();
+
+    this.usuarioService.retornaUsuarioRole().subscribe(r =>{ this.role$ = r}); 
     
     console.log(sessao)
 
