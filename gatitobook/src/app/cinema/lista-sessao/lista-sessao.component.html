@@ -1,1 +1,56 @@
-<p>lista-sessao works!</p>
+<div class="container"> 
+    <h4 class="text-center">Listar Sessão</h4> 
+        <div class="card">
+          <div class="card-header"> 
+            <div class="float-start">
+                <h4>Sessões</h4>
+               </div>
+               <div class="float-right">
+                <button  type="button" class="btn btn-primary" [routerLink]="['../novo-sessao']">Nova Sessão</button> 
+              </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover" *ngIf="sessao$ | async as sessao">
+                    <thead>
+                        <tr>
+                            <th>Id</th>  
+                            <th>Filme</th> 
+                            <th>Cinema</th> 
+                            <th>Bairro</th> 
+                            <th>Hora do Encerramento</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let sessao of sessao">  
+                            <td>{{sessao.id}}</td> 
+                            <td>{{sessao.filme.titulo}}</td>   
+                            <td>{{sessao.cinema.nome}}</td>  
+                            <td>{{sessao.cinema.endereco.bairro}}</td>  
+                            <td>{{sessao.horarioDeEncerramento}}</td> 
+                            <td>
+                                <span class="float-right">
+                                    <button  class="btn btn-outline-warning mb-1 btn-sm"  >Atualizar</button>
+                                    {{''}}
+                                    <button   class="btn btn-outline-danger mb-1 btn-sm"  >Remover</button>
+                                </span>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table> 
+            </div> 
+        </div>
+    </div> 
+<br>
+
+<ng-template #deleteModal>
+    <div class="modal-body text-center">
+      <p>Tem certeza que deseja remover essa sessão?</p>
+      <button type="button" class="btn btn-outline-danger" >Sim</button>
+      {{''}}
+      <button type="button" class="btn btn-outline-success"  >Não</button>
+    </div>
+  </ng-template>
+ 
+ 
+ 
