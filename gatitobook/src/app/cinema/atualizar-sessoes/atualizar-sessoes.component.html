@@ -12,6 +12,7 @@
      
     <div class="card-body">
         <form [formGroup]="formularioSessao"> 
+            
         <div class="form-group">
             <label for="cinema">Cinema:</label>
             <select formControlName="CinemaId" 
@@ -58,8 +59,8 @@
   <ng-template #updateModal>
     <div class="modal-body text-center">
       <p>Tem certeza que deseja atualizar esse filme?</p>
-      <button type="button" class="btn btn-outline-danger"  >Sim</button>
+      <button type="button" class="btn btn-outline-danger" (click)="OnConfirmUpdate()" >Sim</button>
       {{''}}
-      <button type="button" class="btn btn-outline-success"  >Não</button>
+      <button type="button" class="btn btn-outline-success" (click)="OnDeclineUpdate()" >Não</button>
     </div>
   </ng-template>
