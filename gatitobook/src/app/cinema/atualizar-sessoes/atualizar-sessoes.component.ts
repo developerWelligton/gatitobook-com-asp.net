@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
-import { AlertService } from 'src/app/shared/alert.service';
+import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { Cinemas } from '../lista-cinema/lista-cinema.interface';
 import { ListaCinemaService } from '../lista-cinema/lista-cinema.service';
 import { ListaFilmeService } from '../lista-filme/lista-filme.service';
 import { Filme } from '../novo-filme/Filme';
+import { AtualizarSessoesService } from './atualizar-sessoes.service';
 
 @Component({
   selector: 'app-atualizar-sessoes',
@@ -32,7 +33,7 @@ export class AtualizarSessoesComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private route:ActivatedRoute,
     private router: Router,
-    //private atualizarSessaoService:AtualizarSessaoService,
+    private atualizarSessoesService:AtualizarSessoesService,
     private spinner: NgxSpinnerService,
     private alertService: AlertService,
     private modalService:BsModalService,
@@ -48,16 +49,33 @@ export class AtualizarSessoesComponent implements OnInit {
     console.log(sessao)
 
     this.filmeId = sessao.filme.id;
-    this.cinemaId = sessao.cinema.id; 
+    this.cinemaId = sessao.cinema.id;
+    this.sessaoId = sessao.Id;
 
     this.formularioSessao = this.formBuilder.group({ 
+      Id: [sessao.id, [Validators.required]] ,
       CinemaId: [this.cinemaId, [Validators.required]] ,
       FilmeId: [this.filmeId, [Validators.required]]    
-    }) 
-    
-     
+    })  
   }
-
+  atualizar(){
+    this.submitted = true;
+    console.log(this.formularioSessao.value)
+    if(this.formularioSessao.valid){ 
+      
+      this.atualizarSessoesService.updateSessaoId(this.formularioSessao.value).subscribe(
+        success => {
+          this.alertService.showAlert("Sessão atualizado com sucesso!",AlertTypes.SUCCESS) 
+          this.router.navigateByUrl("cinema/lista-sessao")  
+        
+        },error => {this.alertService.showAlert("Sessão não atualizado!",AlertTypes.DANGER) 
+          
+          this.router.navigateByUrl("cinema/lista-sessao") 
+        }
+      );
+      
+    }
+  }
 
   changeFilme(event:any) {
     console.log(event.target.value);
@@ -71,4 +89,13 @@ export class AtualizarSessoesComponent implements OnInit {
     this.updateModalRef = this.modalService.show(this.updateModal,{class:'modal-sm'})
       //this.filmeSelecionado = filme;
     }
+
+    OnConfirmUpdate(){ 
+      this.atualizar();
+      this.updateModalRef?.hide(); 
+    }
+    
+    OnDeclineUpdate(){
+      this.updateModalRef?.hide(); 
+    } 
 }

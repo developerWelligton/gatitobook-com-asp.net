@@ -19,8 +19,8 @@ export class AtualizarSessoesService {
     return this.http.get<any>(`${API_URL_FILMES}/sessao/`+id); 
   }
 
-  updateCinemaId(sessao: Sessao){
-
+  updateSessaoId(sessao: Sessao){ 
+    console.log()
     const token = JSON.parse(this.tokenService.retornaToken());  
     let head_obj2= new HttpHeaders().set("Authorization","bearer "+token)  
     return this.http.put(`${API_URL_FILMES}/sessao/`+ sessao.Id,sessao,{headers:head_obj2}).pipe(take(1));
