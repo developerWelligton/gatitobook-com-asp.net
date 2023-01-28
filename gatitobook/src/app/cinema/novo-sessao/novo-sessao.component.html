@@ -11,39 +11,44 @@
       </div>
      
     <div class="card-body">
-        <form>
+        <form [formGroup]="formularioSessao" (submit)="cadastrar()">
         <div class="form-group">
-          <label for="sessao">Nova Sessão</label>
-          <input type="text" class="form-control" id="sessao" placeholder="sessao"
-          formControlName="sessao"  
-          name="sessao">  
+          <label for="nome">Nova Sessão</label>
+          <input type="text" class="form-control" id="nome" placeholder="nome"
+          formControlName="Nome"  
+          name="nome">  
         </div> 
 
         <div class="form-group">
             <label for="cinema">Cinema:</label>
-            <select formControlName="cinemaId" 
-            class="form-control">
+            <select formControlName="CinemaId" 
+            class="form-control"
+            (change)=" changeCinema($event)"
+            *ngIf="cinema$ | async as cinema"
+            [(ngModel)]="cinemaId">
                 <option disabled>Select Cinema</option>
                 <option>Choose Cinema</option>
-                <option> </option>
+                <option *ngFor="let cinema of cinema" [ngValue]="cinema.id">{{cinema.nome}}</option>
             </select>
              
         </div>
         
         <div class="form-group">
             <label for="filme">Filme:</label>
-            <select formControlName="filmeId" 
-            class="form-control" >
+            <select formControlName="FilmeId" 
+            class="form-control" 
+            (change)=" changeFilme($event)"
+            *ngIf="filme$ | async as filme"
+            [(ngModel)]="filmeId">
                 <option disabled>Select Filme</option>
                 <option>Choose Filme</option>
-                <option> </option>
-            </select>
-             
+                <option *ngFor="let filme of filme" [ngValue]="filme.id">{{filme.titulo}}</option>
+            </select> 
         </div>
           
-        <button type="submit" class="btn btn-primary btn-block">
-          Salvar Sessão
-        </button>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="formularioSessao.invalid">
+            Salvar Sessão
+          </button>
     </form>
     </div>
   </div>
