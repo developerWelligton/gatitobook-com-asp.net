@@ -19,6 +19,7 @@ import { NovoCinemaComponent } from './novo-cinema/novo-cinema.component';
 import { NovoEnderecoComponent } from './novo-endereco/novo-endereco.component';
 import { NovoFilmeComponent } from './novo-filme/novo-filme.component';
 import { NovoGerenteComponent } from './novo-gerente/novo-gerente.component';
+import { NovoSessaoComponent } from './novo-sessao/novo-sessao.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
   {
     path: 'novo-cinema',
     component: NovoCinemaComponent
+  },
+  {
+    path: 'novo-sessao',
+    component: NovoSessaoComponent
   },
   {
     path: 'lista-gerente/gerente/:id',

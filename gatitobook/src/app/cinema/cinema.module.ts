@@ -21,11 +21,12 @@ import { AtualizarEnderecoComponent } from './atualizar-endereco/atualizar-ender
 import { NovoCinemaComponent } from './novo-cinema/novo-cinema.component';
 import { ListaCinemaComponent } from './lista-cinema/lista-cinema.component';
 import { AtualizarCinemaComponent } from './atualizar-cinema/atualizar-cinema.component';
+import { NovoSessaoComponent } from './novo-sessao/novo-sessao.component';
  
 
 
 @NgModule({
-    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent],
+    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent, NovoSessaoComponent],
     imports: [
         CommonModule,
         CinemaRoutingModule,
