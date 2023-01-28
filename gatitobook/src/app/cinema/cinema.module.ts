@@ -23,11 +23,12 @@ import { ListaCinemaComponent } from './lista-cinema/lista-cinema.component';
 import { AtualizarCinemaComponent } from './atualizar-cinema/atualizar-cinema.component';
 import { NovoSessaoComponent } from './novo-sessao/novo-sessao.component';
 import { ListaSessaoComponent } from './lista-sessao/lista-sessao.component';
+import { AtualizarSessoesComponent } from './atualizar-sessoes/atualizar-sessoes.component';
  
 
 
 @NgModule({
-    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent, NovoSessaoComponent, ListaSessaoComponent],
+    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent, NovoSessaoComponent, ListaSessaoComponent, AtualizarSessoesComponent],
     imports: [
         CommonModule,
         CinemaRoutingModule,

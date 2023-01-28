@@ -40,8 +40,7 @@ export class NovoSessaoComponent implements OnInit {
     this.filme$ = this.listaFilmeService.retornaFilmes();
     this.cinema$ = this.listaCinemaService.retornaCinemas();
 
-    this.formularioSessao = this.formBuilder.group({
-      Nome: ['', [Validators.required]] ,
+    this.formularioSessao = this.formBuilder.group({ 
       CinemaId: [this.cinemaId, [Validators.required]] ,
       FilmeId: [this.filmeId, [Validators.required]]    
     }) 

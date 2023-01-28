@@ -77,4 +77,8 @@ export class ListaSessaoComponent implements OnInit {
   handlerError() {
     this.alertService.showAlertDanger("Erro ao carregar sessoes!")
   }
+
+  onEdit(id:any){  
+    this.router.navigate(['sessao',id],{relativeTo:this.route});
+   } 
 }

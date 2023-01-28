@@ -1,9 +1,9 @@
 <div class="container">
-    <h4 class="text-center">Cadastrar Cinema</h4>
+    <h4 class="text-center">Atualizar Sessoes</h4>
     <div class="card">
       <div class="card-header">
         <div class="float-start">
-          <h4>Nova Sessão</h4>
+          <h4>Atualizar Sessoes</h4>
         </div>
         <div class="float-right">
           <button type="button" class="btn btn-primary" [routerLink]="['../lista-sessao']">Lista de Sessões</button>
@@ -11,7 +11,7 @@
       </div>
      
     <div class="card-body">
-        <form [formGroup]="formularioSessao" (submit)="cadastrar()"> 
+        <form [formGroup]="formularioSessao"> 
         <div class="form-group">
             <label for="cinema">Cinema:</label>
             <select formControlName="CinemaId" 
@@ -22,12 +22,7 @@
                 <option disabled>Select Cinema</option>
                 <option>Choose Cinema</option>
                 <option *ngFor="let cinema of cinema" [ngValue]="cinema.id">{{cinema.nome}}</option>
-            </select>
-            <app-mensagem *ngIf="
-            formularioSessao.get('CinemaId')?.errors?.required &&
-            formularioSessao.get('CinemaId')?.touched
-            " mensagem="Cinema é obrigatório">
-          </app-mensagem>
+            </select> 
         </div>
         
         <div class="form-group">
@@ -49,10 +44,22 @@
           </app-mensagem>
         </div>
           
-        <button type="submit" class="btn btn-primary btn-block" [disabled]="formularioSessao.invalid">
-            Salvar Sessão
-          </button>
+        <button type="submit" class="btn btn-primary btn-block"
+        type="submit"
+        class="btn btn-primary btn-block" 
+        (click)="OnUpdate()">
+          Alterar Cinema
+        </button>
     </form>
     </div>
   </div>
   </div>
+
+  <ng-template #updateModal>
+    <div class="modal-body text-center">
+      <p>Tem certeza que deseja atualizar esse filme?</p>
+      <button type="button" class="btn btn-outline-danger"  >Sim</button>
+      {{''}}
+      <button type="button" class="btn btn-outline-success"  >Não</button>
+    </div>
+  </ng-template>
