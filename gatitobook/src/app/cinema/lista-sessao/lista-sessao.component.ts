@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
+import { empty, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
-import { AlertService } from 'src/app/shared/alert.service';
+import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { Sessao } from '../novo-sessao/Sessao';
 import { Sessoes } from './lista-sessao.interface';
 import { ListaSessaoService } from './lista-sessao.service';
@@ -17,10 +18,12 @@ export class ListaSessaoComponent implements OnInit {
 
   sessao$: Observable<Sessoes[]> | undefined 
   public sessoes!: Sessoes[]
+  
 
   deleteModalRef?: BsModalRef;
   @ViewChild('deleteModal') deleteModal:any;
-  sessaoSelecionado:Sessoes | undefined 
+  sessaoSelecionado:Sessoes | any  
+  role$: any;
 
   constructor(
     private listaSessaoService: ListaSessaoService,
@@ -32,15 +35,46 @@ export class ListaSessaoComponent implements OnInit {
     }
   ngOnInit(): void {
     this.sessao$ = this.listaSessaoService.retornaSessoes();
+    
     this.sessao$.subscribe(r => {
       console.log(r)
     })
+    this.usuarioService.retornaUsuarioRole().subscribe(r =>{ this.role$ = r}); 
     
   }
 
  
 
-  OnConfirmDelete(){  
-     
+  OnDelete(sessao:Sessoes){
+    console.log(sessao)
+    this.deleteModalRef = this.modalService.show(this.deleteModal,{class:'modal-sm'})
+    this.sessaoSelecionado = sessao;
+  }
+
+  OnConfirmDelete(){
+    this.listaSessaoService.remove(this.sessaoSelecionado?.id).subscribe(  
+      success => this.OnRefresh(),
+      error => this.handlerError()
+    );
+    this.deleteModalRef?.hide(); 
+  }
+  
+  OnDeclineDelete(){
+    this.deleteModalRef?.hide(); 
+  }
+
+
+  OnRefresh(){
+    this.alertService.showAlert("filme deletado",AlertTypes.SUCCESS)
+     this.sessao$ = this.listaSessaoService.retornaSessoes().pipe(
+      catchError(error => {
+        console.error(error);
+        this.handlerError();
+        return empty();
+      })
+    )
+  }
+  handlerError() {
+    this.alertService.showAlertDanger("Erro ao carregar sessoes!")
   }
 }

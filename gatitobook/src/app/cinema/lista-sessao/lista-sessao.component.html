@@ -31,7 +31,7 @@
                                 <span class="float-right">
                                     <button  class="btn btn-outline-warning mb-1 btn-sm"  >Atualizar</button>
                                     {{''}}
-                                    <button   class="btn btn-outline-danger mb-1 btn-sm"  >Remover</button>
+                                    <button *ngIf="role$ == 'admin'" class="btn btn-outline-danger mb-1 btn-sm" (click)="OnDelete(sessao)">Remover</button>
                                 </span>
                             </td>
                         </tr>
@@ -46,9 +46,9 @@
 <ng-template #deleteModal>
     <div class="modal-body text-center">
       <p>Tem certeza que deseja remover essa sessão?</p>
-      <button type="button" class="btn btn-outline-danger" >Sim</button>
+      <button type="button" class="btn btn-outline-danger" (click)="OnConfirmDelete()" >Sim</button>
       {{''}}
-      <button type="button" class="btn btn-outline-success"  >Não</button>
+      <button type="button" class="btn btn-outline-success" (click)="OnDeclineDelete()" >Não</button>
     </div>
   </ng-template>
  
