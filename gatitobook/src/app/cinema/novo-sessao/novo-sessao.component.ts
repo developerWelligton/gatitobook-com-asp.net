@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
-import { AlertService } from 'src/app/shared/alert.service';
+import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { Cinemas } from '../lista-cinema/lista-cinema.interface';
 import { ListaCinemaService } from '../lista-cinema/lista-cinema.service';
 import { ListaFilmeService } from '../lista-filme/lista-filme.service';
@@ -11,6 +11,8 @@ import { ListaGerenteService } from '../lista-gerente/lista-gerente.service';
 import { Cinema } from '../novo-cinema/Cinema';
 import { Filme } from '../novo-filme/Filme';
 import { Gerente } from '../novo-gerente/Gerente';
+import { NovoSessaoService } from './novo-sessao.service';
+import { Sessao } from './Sessao';
 
 @Component({
   selector: 'app-novo-sessao',
@@ -30,6 +32,7 @@ export class NovoSessaoComponent implements OnInit {
     private router: Router,
     private listaFilmeService: ListaFilmeService , 
     private listaCinemaService:  ListaCinemaService,
+    private novoSessaoService:  NovoSessaoService,
     private spinner: NgxSpinnerService,
     private alertService: AlertService) { }
 
@@ -49,8 +52,21 @@ export class NovoSessaoComponent implements OnInit {
     console.log(this.formularioSessao.getRawValue())
     this.spinner.show();
     if(this.formularioSessao.valid){  
-      const novoSessao = this.formularioSessao.getRawValue() as Cinema; 
-      alert(novoSessao)
+      const novoSessao = this.formularioSessao.getRawValue() as Sessao; 
+      
+       
+      this.novoSessaoService.cadastraNovoSessao(novoSessao).subscribe(
+        () => {
+          this.alertService.showAlert("Cinema cadastrado com sucesso!",AlertTypes.SUCCESS)
+          this.spinner.hide(); 
+          this.formularioSessao.reset()
+        },
+        (error:any) => {
+          console.log(error);
+          this.alertService.showAlert("Endereço não cadastrado!",AlertTypes.DANGER)
+          this.spinner.hide()
+        }
+      ); 
     }
   }
 
