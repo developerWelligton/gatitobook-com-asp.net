@@ -15,6 +15,7 @@ import { ListaCinemaComponent } from './lista-cinema/lista-cinema.component';
 import { ListaEnderecoComponent } from './lista-endereco/lista-endereco.component';
 import { ListaFilmeComponent } from './lista-filme/lista-filme.component';
 import { ListaGerenteComponent } from './lista-gerente/lista-gerente.component';
+import { ListaSessaoComponent } from './lista-sessao/lista-sessao.component';
 import { NovoCinemaComponent } from './novo-cinema/novo-cinema.component';
 import { NovoEnderecoComponent } from './novo-endereco/novo-endereco.component';
 import { NovoFilmeComponent } from './novo-filme/novo-filme.component';
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'lista-cinema',
     component: ListaCinemaComponent, 
+  },
+  {
+    path: 'lista-sessao',
+    component: ListaSessaoComponent, 
   },
   {
     path: 'novo-gerente',

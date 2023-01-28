@@ -48,6 +48,10 @@
           <br>
           <a class="btn btn-primary medio" [routerLink]="['cinema','novo-sessao']">Criar sessão</a>
         </li> 
+        <li *ngIf="role$ == 'admin'">
+          <br>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-sessao']">Lista sessão</a>
+        </li> 
         
       </ul>
     </app-menu>
