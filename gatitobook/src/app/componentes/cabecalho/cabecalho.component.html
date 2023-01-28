@@ -12,7 +12,7 @@
         <li *ngIf="user.username; else vazio">
           <a class="btn btn-primary medio" [routerLink]="['cinema']" >Home</a> 
         </li>
-        <li *ngIf="user.username; else vazio">
+        <li *ngIf="role$ == 'admin'" >
           <br>
             <a class="btn btn-primary medio" [routerLink]="['cinema','novo-filme']" >Cadastrar Filme</a> 
         </li>
@@ -48,7 +48,7 @@
           <br>
           <a class="btn btn-primary medio" [routerLink]="['cinema','novo-sessao']">Criar sessão</a>
         </li> 
-        <li *ngIf="role$ == 'admin'">
+        <li *ngIf="user.username; else vazio" >
           <br>
           <a class="btn btn-primary medio" [routerLink]="['cinema','lista-sessao']">Lista sessão</a>
         </li> 

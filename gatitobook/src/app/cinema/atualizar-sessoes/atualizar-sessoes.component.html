@@ -45,7 +45,7 @@
           </app-mensagem>
         </div>
           
-        <button type="submit" class="btn btn-primary btn-block"
+        <button  *ngIf="role$ == 'admin'" type="submit" class="btn btn-primary btn-block"
         type="submit"
         class="btn btn-primary btn-block" 
         (click)="OnUpdate()">
