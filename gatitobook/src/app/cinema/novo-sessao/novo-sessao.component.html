@@ -1,1 +1,50 @@
-<p>novo-sessao works!</p>
+<div class="container">
+    <h4 class="text-center">Cadastrar Cinema</h4>
+    <div class="card">
+      <div class="card-header">
+        <div class="float-start">
+          <h4>Nova Sessão</h4>
+        </div>
+        <div class="float-right">
+          <button type="button" class="btn btn-primary" [routerLink]="['../lista-sessao']">Lista de Sessões</button>
+        </div>
+      </div>
+     
+    <div class="card-body">
+        <form>
+        <div class="form-group">
+          <label for="sessao">Nova Sessão</label>
+          <input type="text" class="form-control" id="sessao" placeholder="sessao"
+          formControlName="sessao"  
+          name="sessao">  
+        </div> 
+
+        <div class="form-group">
+            <label for="cinema">Cinema:</label>
+            <select formControlName="cinemaId" 
+            class="form-control">
+                <option disabled>Select Cinema</option>
+                <option>Choose Cinema</option>
+                <option> </option>
+            </select>
+             
+        </div>
+        
+        <div class="form-group">
+            <label for="filme">Filme:</label>
+            <select formControlName="filmeId" 
+            class="form-control" >
+                <option disabled>Select Filme</option>
+                <option>Choose Filme</option>
+                <option> </option>
+            </select>
+             
+        </div>
+          
+        <button type="submit" class="btn btn-primary btn-block">
+          Salvar Sessão
+        </button>
+    </form>
+    </div>
+  </div>
+  </div>
