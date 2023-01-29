@@ -51,7 +51,7 @@ export class ListaEnderecoComponent implements OnInit {
   }
 
   OnRefresh(){
-    this.alertService.showAlert("Endereco deletado",AlertTypes.SUCCESS)
+    this.alertService.showAlert("Endereço deletado",AlertTypes.SUCCESS)
      this.endereco$ = this.listaEnderecoService.retornaEnderecos().pipe(
       catchError(error => {
         console.error(error);
@@ -61,7 +61,7 @@ export class ListaEnderecoComponent implements OnInit {
     )
   }
   handlerError() {
-    this.alertService.showAlertDanger("Erro ao carregar gerente!")
+    this.alertService.showAlertDanger("Erro ao carregar endereço!")
   }
    
  onEdit(id:Endereco){  
