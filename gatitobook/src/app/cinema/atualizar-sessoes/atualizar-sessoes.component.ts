@@ -51,8 +51,7 @@ export class AtualizarSessoesComponent implements OnInit {
     this.cinema$ = this.listaCinemaService.retornaCinemas();
 
     this.usuarioService.retornaUsuarioRole().subscribe(r =>{ this.role$ = r}); 
-    
-    console.log(sessao)
+     
 
     this.filmeId = sessao.filme.id;
     this.cinemaId = sessao.cinema.id;
@@ -65,8 +64,7 @@ export class AtualizarSessoesComponent implements OnInit {
     })  
   }
   atualizar(){
-    this.submitted = true;
-    console.log(this.formularioSessao.value)
+    this.submitted = true; 
     if(this.formularioSessao.valid){ 
       
       this.atualizarSessoesService.updateSessaoId(this.formularioSessao.value).subscribe(
@@ -84,11 +82,11 @@ export class AtualizarSessoesComponent implements OnInit {
   }
 
   changeFilme(event:any) {
-    console.log(event.target.value);
+   event.target.value;
   }
 
   changeCinema(event:any) {
-    console.log(event.target.value); 
+   event.target.value;
   }
   
   OnUpdate(){  
