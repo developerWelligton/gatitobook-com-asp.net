@@ -5,5 +5,5 @@ export interface Cinema {
     Id:string | any;
     Nome:string | any;
     EnderecoId:Endereco;
-    GerenteId:Gerente | any;
+    GerenteId:Gerente | any; 
 }

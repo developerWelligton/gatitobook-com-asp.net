@@ -4,5 +4,7 @@ export interface Filme {
     diretor?: string| undefined;
     genero?: string| undefined;
     duracao?:DoubleRange| undefined;
-    classificacaoEtaria:DoubleRange | undefined;
+    classificacaoEtaria:DoubleRange | undefined; 
+    dataCriacao?:string | undefined;
+    
 }

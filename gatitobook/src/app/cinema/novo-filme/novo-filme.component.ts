@@ -26,10 +26,12 @@ export class NovoFilmeComponent implements OnInit {
       diretor: ['', [Validators.required]], 
       genero: ['', [Validators.required]], 
       duracao: ['', [Validators.required,Validators.max(600),Validators.min(0)]], 
-      classificacaoEtaria: ['', [Validators.required]],   
+      classificacaoEtaria: ['', [Validators.required]],
+      dataCriacao: ['', [Validators.required]]   
     })
   }
   cadastrar() {
+    console.error("OLA")
     this.spinner.show();
     if(this.formularioFilme.valid){ 
       const novoFilme = this.formularioFilme.getRawValue() as Filme;

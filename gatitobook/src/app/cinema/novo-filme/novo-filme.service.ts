@@ -20,7 +20,7 @@ export class NovoFilmeService {
 
   let head_obj= new HttpHeaders().set("Authorization","bearer "+token)
     
-    
+  console.error("OLA") 
     return this.http.post(`${API_URL_FILMES}/filme`, novoFilme, {headers:head_obj}); 
   }
 }
