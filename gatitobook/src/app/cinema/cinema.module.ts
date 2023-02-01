@@ -24,11 +24,14 @@ import { AtualizarCinemaComponent } from './atualizar-cinema/atualizar-cinema.co
 import { NovoSessaoComponent } from './novo-sessao/novo-sessao.component';
 import { ListaSessaoComponent } from './lista-sessao/lista-sessao.component';
 import { AtualizarSessoesComponent } from './atualizar-sessoes/atualizar-sessoes.component';
+import { GraficoFilmeComponent } from './grafico-filme/grafico-filme.component'; 
+import { NgChartjsModule } from 'ng-chartjs';
+ 
  
 
 
 @NgModule({
-    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent, NovoSessaoComponent, ListaSessaoComponent, AtualizarSessoesComponent],
+    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent, NovoSessaoComponent, ListaSessaoComponent, AtualizarSessoesComponent, GraficoFilmeComponent],
     imports: [
         CommonModule,
         CinemaRoutingModule,
@@ -36,8 +39,8 @@ import { AtualizarSessoesComponent } from './atualizar-sessoes/atualizar-sessoes
         ReactiveFormsModule,
         MensagemModule,
         AlertModule,
-        NgxPaginationModule 
-        
+        NgxPaginationModule, 
+        NgChartjsModule
     ],
     providers:[
         FilmeResolver

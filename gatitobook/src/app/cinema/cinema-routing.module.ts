@@ -6,6 +6,7 @@ import { AtualizarEnderecoComponent } from './atualizar-endereco/atualizar-ender
 import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component'; 
 import { AtualizarGerenteComponent } from './atualizar-gerente/atualizar-gerente.component';
 import { AtualizarSessoesComponent } from './atualizar-sessoes/atualizar-sessoes.component';
+import { GraficoFilmeComponent } from './grafico-filme/grafico-filme.component';
 import { CinemaResolver } from './guards/cinemaResolver';
 import { EnderecoResolver } from './guards/enderecoResolver';
 import { FilmeResolver } from './guards/filmeResolver';
@@ -109,6 +110,18 @@ const routes: Routes = [
     resolve:{
       sessao:SessaoResolver
     }  
+  },
+  {
+    path: 'lista-sessao/sessao/:id',
+    component: AtualizarSessoesComponent,
+    resolve:{
+      sessao:SessaoResolver
+    }  
+  },
+  {
+    path: 'grafico-filme',
+    component: GraficoFilmeComponent,
+      
   },
   
   

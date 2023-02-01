@@ -51,7 +51,11 @@
         <li *ngIf="user.username; else vazio" >
           <br>
           <a class="btn btn-primary medio" [routerLink]="['cinema','lista-sessao']">Lista sessão</a>
-        </li> 
+        </li>
+        <li *ngIf="role$ == 'admin'">
+          <br>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','grafico-filme']">Grafico</a>
+        </li>  
         
       </ul>
     </app-menu>

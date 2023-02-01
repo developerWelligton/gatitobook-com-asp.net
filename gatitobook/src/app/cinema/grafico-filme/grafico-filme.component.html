@@ -1,0 +1,12 @@
+<hello name="{{ name }}"></hello>
+<div style="position: relative; width: 100%;">
+	<canvas id="testChart" ngChartjs [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend"
+	 [chartType]="lineChartType" [inlinePlugins]="inlinePlugin" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+<p>Change chart type</p>
+<button class="button" (click)="changeChartType()">Click</button>
+<p>Change chart label</p>
+<button class="button" (click)="changeChartLabel()">Click</button>
+<p>Get chart instance</p>
+<button class="button" (click)="getChartInstance()">Click</button>
