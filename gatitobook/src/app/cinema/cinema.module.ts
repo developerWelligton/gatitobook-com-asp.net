@@ -25,13 +25,13 @@ import { NovoSessaoComponent } from './novo-sessao/novo-sessao.component';
 import { ListaSessaoComponent } from './lista-sessao/lista-sessao.component';
 import { AtualizarSessoesComponent } from './atualizar-sessoes/atualizar-sessoes.component';
 import { GraficoFilmeComponent } from './grafico-filme/grafico-filme.component'; 
-import { NgChartjsModule } from 'ng-chartjs';
+import { NgChartjsModule } from 'ng-chartjs'; 
  
  
 
 
 @NgModule({
-    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent, NovoSessaoComponent, ListaSessaoComponent, AtualizarSessoesComponent, GraficoFilmeComponent],
+    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent, NovoSessaoComponent, ListaSessaoComponent, AtualizarSessoesComponent, GraficoFilmeComponent ],
     imports: [
         CommonModule,
         CinemaRoutingModule,

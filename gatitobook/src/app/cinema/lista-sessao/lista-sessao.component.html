@@ -32,6 +32,9 @@
                                     <button   *ngIf="role$ == 'admin'"  class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(sessao.id)" >Atualizar</button>
                                     {{''}}
                                     <button *ngIf="role$ == 'admin'" class="btn btn-outline-danger mb-1 btn-sm" (click)="OnDelete(sessao)">Remover</button>
+                                    {{''}}
+                                    <button   *ngIf="role$ == 'admin'"  class="btn btn-outline-warning mb-1 btn-sm"  (click)="OnCreate(sessao.id)">Adquirir</button>
+                                     
                                 </span>
                             </td>
                         </tr>
@@ -49,6 +52,15 @@
       <button type="button" class="btn btn-outline-danger" (click)="OnConfirmDelete()" >Sim</button>
       {{''}}
       <button type="button" class="btn btn-outline-success" (click)="OnDeclineDelete()" >Não</button>
+    </div>
+  </ng-template>
+
+  <ng-template #createModal>
+    <div class="modal-body text-center">
+      <p>Tem certeza que deseja adquirir essa sessão?</p>
+      <button type="button" class="btn btn-outline-danger" (click)="OnConfirmCreate()" >Sim</button>
+      {{''}}
+      <button type="button" class="btn btn-outline-success" (click)="OnDeclineCreate()" >Não</button>
     </div>
   </ng-template>
  

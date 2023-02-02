@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
 import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { Sessao } from '../novo-sessao/Sessao';
+ 
 import { Sessoes } from './lista-sessao.interface';
 import { ListaSessaoService } from './lista-sessao.service';
 
@@ -18,12 +19,18 @@ export class ListaSessaoComponent implements OnInit {
 
   sessao$: Observable<Sessoes[]> | undefined 
   public sessoes!: Sessoes[]
+
+  
   
 
   deleteModalRef?: BsModalRef;
   @ViewChild('deleteModal') deleteModal:any;
   sessaoSelecionado:Sessoes | any  
   role$: any;
+  ingresso: Ingresso | any
+  sessaoId: string | any
+  createModalRef?: BsModalRef;
+  @ViewChild('createModal') createModal:any;  
 
   constructor(
     private listaSessaoService: ListaSessaoService,
@@ -81,4 +88,26 @@ export class ListaSessaoComponent implements OnInit {
   onEdit(id:any){  
     this.router.navigate(['sessao',id],{relativeTo:this.route});
    } 
+
+   OnCreate(idSessao: string){
+   
+    this.createModalRef = this.modalService.show(this.createModal,{class:'modal-sm'})
+    this.sessaoId = idSessao
+    
+  }
+
+  OnConfirmCreate(){
+    let ingresso = { 
+      sessaoId: this.sessaoId, 
+    }; 
+    this.listaSessaoService.cadastraIngresso(ingresso).subscribe(  
+      success => this.OnRefresh(),
+      error => this.handlerError()
+    );
+    this.createModalRef?.hide(); 
+  }
+  
+  OnDeclineCreate(){
+    this.createModalRef?.hide(); 
+  }
 }
