@@ -18,6 +18,7 @@ import { ListaSessaoService } from './lista-sessao.service';
 export class ListaSessaoComponent implements OnInit {
 
   sessao$: Observable<Sessoes[]> | undefined 
+  ingresso$: Observable<any[]> | undefined 
   public sessoes!: Sessoes[]
 
   
@@ -26,8 +27,7 @@ export class ListaSessaoComponent implements OnInit {
   deleteModalRef?: BsModalRef;
   @ViewChild('deleteModal') deleteModal:any;
   sessaoSelecionado:Sessoes | any  
-  role$: any;
-  ingresso: Ingresso | any
+  role$: any; 
   sessaoId: string | any
   createModalRef?: BsModalRef;
   @ViewChild('createModal') createModal:any;  
@@ -38,7 +38,7 @@ export class ListaSessaoComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private modalService:BsModalService,
-    private usuarioService: UsuarioService) {  
+    private usuarioService: UsuarioService ) {  
     }
   ngOnInit(): void {
     this.sessao$ = this.listaSessaoService.retornaSessoes();
@@ -47,7 +47,7 @@ export class ListaSessaoComponent implements OnInit {
       console.log(r)
     })
     this.usuarioService.retornaUsuarioRole().subscribe(r =>{ this.role$ = r}); 
-    
+    this.ingresso$ = this.listaSessaoService.retornaIngresso()
   }
 
  
@@ -109,5 +109,6 @@ export class ListaSessaoComponent implements OnInit {
   
   OnDeclineCreate(){
     this.createModalRef?.hide(); 
-  }
+  }  
+  
 }
