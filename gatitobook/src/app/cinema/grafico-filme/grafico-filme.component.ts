@@ -1,6 +1,10 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { NgChartjsService } from 'ng-chartjs';
 import * as Chart from 'chart.js';
+import { ListaSessaoService } from '../lista-sessao/lista-sessao.service';
+import { Ingressos } from '../lista-sessao/ingressoQuantidade';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/internal/operators/map';
 
  
 @Component({
@@ -10,10 +14,12 @@ import * as Chart from 'chart.js';
 })
 export class GraficoFilmeComponent implements OnInit {
   name = 'ng-chartjs ' + VERSION.major;;
-
+  ingressosQuantidade$: Observable<Ingressos[]> | undefined  
+  
+  ingressoQuant: Array<any> | undefined ;
   lineChartData: Array<any> = [
     {
-      label: 'My First dataset',
+      label: 'Ingresso X Sessão',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
@@ -31,10 +37,10 @@ export class GraficoFilmeComponent implements OnInit {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40],
+      data: [],
     },
   ];
-  lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  lineChartLabels: Array<any> = [];
   lineChartOptions: any = {
     responsive: true,
     annotation: {
@@ -58,15 +64,26 @@ export class GraficoFilmeComponent implements OnInit {
     }
   };
   lineChartLegend = true;
-  lineChartType: Chart.ChartType = 'line';
+  lineChartType: Chart.ChartType = 'bar';
   inlinePlugin: any;
   textPlugin: any;
 
-  constructor(private ngChartjsService: NgChartjsService) {
+  constructor(private ngChartjsService: NgChartjsService,
+     private listaSessaoService: ListaSessaoService ) {
     
   }
-
-  ngOnInit() {
+  
+ 
+  ngOnInit() { 
+    
+    this.ingressosQuantidade$ = this.listaSessaoService.retornaIngressoQuantidade();
+    const ingressos = this.ingressosQuantidade$.subscribe((ingressos) => { 
+      ingressos.forEach(ingresso => {   
+        this.lineChartData[0].data.push(ingresso.total);
+        this.lineChartLabels.push(ingresso.sessaoId.toString());
+      });
+    });
+ 
     this.textPlugin = [{
       id: 'textPlugin',
       beforeDraw(chart: any): any {
@@ -88,28 +105,7 @@ export class GraficoFilmeComponent implements OnInit {
     this.inlinePlugin = this.textPlugin;
   }
   // events
-  chartClicked(e: any): void {
-    console.log('click', e);
-  }
-
-  chartHovered(e: any): void {
-    console.log('hover', e);
-  }
-
-  changeChartType() {
-    if (this.lineChartType === 'line') {
-      this.lineChartType = 'bar';
-    } else {
-      this.lineChartType = 'line';
-    }
-  }
-
-  changeChartLabel() {
-    this.lineChartLabels = ['1', '2', '3', '4', '5', '6', '7'];
-  }
-
-  getChartInstance() {
-    const chart: any = this.ngChartjsService.getChart('testChart');
-    console.log(chart);
-  }
+ 
+  
+  
 }
