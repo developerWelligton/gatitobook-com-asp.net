@@ -8,6 +8,7 @@
     </i>
     <a class="navbar-brand" [routerLink]="['cinema']" >Cinema Management</a>
     <app-menu #menu>
+        
       <ul style="list-style-type: none;" *ngIf="user$ | async as user">
         <li *ngIf="user.username; else vazio">
           <a class="btn btn-primary medio" [routerLink]="['cinema']" >Home</a> 

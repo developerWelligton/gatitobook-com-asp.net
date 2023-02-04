@@ -16,8 +16,7 @@
                             <th>Id</th>  
                             <th>Filme</th> 
                             <th>Cinema</th> 
-                            <th>Bairro</th> 
-                            <th>Hora do Encerramento</th> 
+                            <th>Bairro</th>  
                         </tr>
                     </thead>
                     <tbody>
@@ -25,16 +24,14 @@
                             <td>{{sessao.id}}</td> 
                             <td>{{sessao.filme.titulo}}</td>   
                             <td>{{sessao.cinema.nome}}</td>  
-                            <td>{{sessao.cinema.endereco.bairro}}</td>  
-                            <td>{{sessao.horarioDeEncerramento}}</td> 
+                            <td>{{sessao.cinema.endereco.bairro}}</td>   
                             <td>
                                 <span class="float-right">
                                     <button   *ngIf="role$ == 'admin'"  class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(sessao.id)" >Atualizar</button>
                                     {{''}}
                                     <button *ngIf="role$ == 'admin'" class="btn btn-outline-danger mb-1 btn-sm" (click)="OnDelete(sessao)">Remover</button>
                                     {{''}}
-                                    <button   *ngIf="role$ == 'admin'"  class="btn btn-outline-warning mb-1 btn-sm"  (click)="OnCreate(sessao.id)">Adquirir</button>
-                                     
+                                    <button   *ngIf="role$ == 'admin' || 'regular'"  class="btn btn-outline-success mb-1 btn-sm "  (click)="OnCreate(sessao.id)">Adquirir</button>   
                                 </span>
                             </td>
                         </tr>

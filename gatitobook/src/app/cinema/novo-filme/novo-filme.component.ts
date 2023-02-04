@@ -30,8 +30,7 @@ export class NovoFilmeComponent implements OnInit {
       dataCriacao: ['', [Validators.required]]   
     })
   }
-  cadastrar() {
-    console.error("OLA")
+  cadastrar() { 
     this.spinner.show();
     if(this.formularioFilme.valid){ 
       const novoFilme = this.formularioFilme.getRawValue() as Filme;

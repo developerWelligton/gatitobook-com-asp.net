@@ -75,7 +75,7 @@ export class ListaSessaoComponent implements OnInit {
 
 
   OnRefresh(){
-    this.alertService.showAlert("Sessão deletada",AlertTypes.SUCCESS)
+    this.alertService.showAlert("Sessão adquirida",AlertTypes.SUCCESS)
      this.sessao$ = this.listaSessaoService.retornaSessoes().pipe(
       catchError(error => {
         console.error(error);
