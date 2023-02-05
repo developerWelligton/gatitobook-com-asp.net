@@ -1,3 +1,136 @@
-<app-cabecalho></app-cabecalho>
-<router-outlet></router-outlet>
+ <app-cabecalho></app-cabecalho>
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3 sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"  [routerLink]="['cinema']">
+                <span data-feather="home" class="align-text-bottom"></span>
+                Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  [routerLink]="['cinema','grafico-filme']">
+                  <span data-feather="home" class="align-text-bottom"></span>
+                  Gráfico Sessão
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page"  [routerLink]="['cinema','grafico-sessao']">
+                  <span data-feather="home" class="align-text-bottom"></span>
+                  Gráfico Filme
+                </a>
+              </li>
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                <span>Sessão</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                  <span data-feather="plus-circle" class="align-text-bottom"></span>
+                </a>
+            </h6>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['cinema','novo-sessao']">
+                <span data-feather="file" class="align-text-bottom"></span>
+                Cadastrar uma Sessão
+              </a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['cinema','lista-sessao']">
+                  <span data-feather="file" class="align-text-bottom"></span>
+                  CRUD Sessões
+                </a>
+              </li>   
+          </ul>
+          <!--cinema-->
+          <ul class="nav flex-column"> 
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                <span>Cinema</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                  <span data-feather="plus-circle" class="align-text-bottom"></span>
+                </a>
+            </h6>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['cinema','novo-cinema']">
+                <span data-feather="file" class="align-text-bottom"></span>
+                Cadastrar uma Cinema
+              </a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['cinema','lista-cinema']">
+                  <span data-feather="file" class="align-text-bottom"></span>
+                  CRUD Cinema
+                </a>
+              </li>   
+          </ul>
+          <!--filme-->
+          <ul class="nav flex-column"> 
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                <span>Filme</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                  <span data-feather="plus-circle" class="align-text-bottom"></span>
+                </a>
+            </h6>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['cinema','novo-filme']">
+                <span data-feather="file" class="align-text-bottom"></span>
+                Cadastrar uma Filme
+              </a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['cinema','lista-filme']">
+                  <span data-feather="file" class="align-text-bottom"></span>
+                  CRUD Filme
+                </a>
+              </li>   
+          </ul>
+            <!--gerente-->
+            <ul class="nav flex-column"> 
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                    <span>Gerente</span>
+                    <a class="link-secondary" href="#" aria-label="Add a new report">
+                      <span data-feather="plus-circle" class="align-text-bottom"></span>
+                    </a>
+                </h6>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['cinema','novo-gerente']">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                    Cadastrar Gerente
+                  </a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['cinema','lista-gerente']">
+                      <span data-feather="file" class="align-text-bottom"></span>
+                      CRUD Gerente
+                    </a>
+                  </li>   
+              </ul>   
+           <!--endereço-->
+           <ul class="nav flex-column"> 
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                <span>Endereço</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                  <span data-feather="plus-circle" class="align-text-bottom"></span>
+                </a>
+            </h6>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['cinema','novo-endereco']">
+                <span data-feather="file" class="align-text-bottom"></span>
+                Cadastrar Endereço
+              </a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['cinema','lista-endereco']">
+                  <span data-feather="file" class="align-text-bottom"></span>
+                  CRUD Endereço
+                </a>
+              </li>   
+          </ul>      
+          
+        </div>
+      </nav> 
+      <main class="col-md-9 mt-5">
+        <router-outlet></router-outlet>   
+      </main>
+    </div>
+  </div> 
 <app-rodape></app-rodape>

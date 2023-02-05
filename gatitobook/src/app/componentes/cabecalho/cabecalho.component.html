@@ -1,86 +1,12 @@
-<header class="sticky-top mb-5">
-  <nav class="navbar navbar-dark bg-dark">
-    <i class="text-white fa fa-bars mr-2"
-    (click)="menu.abreMenu()"
-    (keyup.space)="menu.abreMenu()"
-    >
-
-    </i>
-    <a class="navbar-brand" [routerLink]="['cinema']" >Cinema Management</a>
-    <app-menu #menu>
-        
-      <ul style="list-style-type: none;" *ngIf="user$ | async as user">
-        <li *ngIf="user.username; else vazio">
-          <a class="btn btn-primary medio" [routerLink]="['cinema']" >Home</a> 
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-            <a class="btn btn-primary medio" [routerLink]="['cinema','novo-filme']" >Cadastrar Filme</a> 
-        </li>
-        <li *ngIf="user.username; else vazio" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-filme']">Lista de Filmes</a>
-        </li> 
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-gerente']">Lista de Gerente</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-endereco']">Lista de Endereco</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-gerente']">Cadastrar Gerente</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-endereco']">Cadastrar Endereço</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-cinema']">Cadastrar Cinema</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-cinema']">Listar Cinema</a>
-        </li> 
-        <li *ngIf="role$ == 'admin'">
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-sessao']">Criar sessão</a>
-        </li> 
-        <li *ngIf="user.username; else vazio" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-sessao']">Lista sessão</a>
-        </li>
-        <li *ngIf="role$ == 'admin'">
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','grafico-filme']">Grafico Filme</a>
-        </li>  
-        <li *ngIf="role$ == 'admin'">
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','grafico-sessao']">Grafico Sessão</a>
-        </li> 
-        
-      </ul>
-    </app-menu>
-    <div *ngIf="user$ | async as user" class="text-white ">
-      <div *ngIf="user.username; else login">
-        <i class="fa fa-user-circle mr-1"> </i>
-        <a class="mr-1">{{ user.username }}</a>
-        <a (click)="logout()">Logout</a>
-      </div>
-    </div> 
-  </nav>
-
-  <ng-template #login>
-    <span class="navbar-text">
-      <a [routerLink]="['']">Login</a>
-    </span>
-  </ng-template>
-
-  <ng-template #vazio> 
-    <span> 
-    </span>
-  </ng-template>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Company name</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
+  </div>
 </header>
