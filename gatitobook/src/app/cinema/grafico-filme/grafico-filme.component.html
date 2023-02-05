@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container" *ngIf="lineChartData && lineChartLabels" >
     <h4 class="text-center">Gráfico de Quantidade de Ingresso por Sessão</h4>
     <div class="card"> 
-        <div style="position: relative; width: 100%;">
-            <canvas id="testChart" ngChartjs [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend"
-             [chartType]="lineChartType" [inlinePlugins]="inlinePlugin" ></canvas>
-        </div> 
+      <div style="position: relative; width: 100%;">
+        <canvas #myChart id="testChart" ngChartjs [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend"
+        [chartType]="lineChartType" [inlinePlugins]="inlinePlugin" ></canvas>
+      </div> 
     </div> 
+    <p>Change chart type</p>
+    <button class="button" (click)="changeChartType()">Click</button>  
 </div>
- 
