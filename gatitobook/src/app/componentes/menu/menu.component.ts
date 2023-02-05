@@ -22,5 +22,8 @@ export class MenuComponent implements OnInit {
   fechaMenu() {
     this.mostraMenu = false;
   }
+  abreMenuMouse() {
+    this.mostraMenu = true;
+  }
 }
 

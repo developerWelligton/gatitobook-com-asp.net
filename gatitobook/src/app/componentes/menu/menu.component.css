@@ -5,8 +5,9 @@
     max-width: 320px;
     margin:0;
     padding: 1em;
-    background: rgb(100, 100, 100);
-    top:0;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(228, 226, 226);
+    top:56px;
     left: -90%;
     transition: left 0.3s ease-out;
     z-index: 1;

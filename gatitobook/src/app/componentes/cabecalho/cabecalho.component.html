@@ -3,66 +3,132 @@
     <i class="text-white fa fa-bars mr-2"
     (click)="menu.abreMenu()"
     (keyup.space)="menu.abreMenu()"
-    >
-
+    (mouseenter)="menu.abreMenuMouse()"
+    > 
     </i>
     <a class="navbar-brand" [routerLink]="['cinema']" >Cinema Management</a>
-    <app-menu #menu>
-        
-      <ul style="list-style-type: none;" *ngIf="user$ | async as user">
-        <li *ngIf="user.username; else vazio">
-          <a class="btn btn-primary medio" [routerLink]="['cinema']" >Home</a> 
+    <app-menu #menu>  
+      <a class="nav-link"   [routerLink]="['cinema']" *ngIf="role$ == 'admin'">
+        <span data-feather="file-text" class="align-text-bottom"></span>
+        Dashboard Insigth
+      </a>
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase" *ngIf="role$ == 'admin'">
+        <span>Sessão</span>
+        <a class="link-secondary"  aria-label="Add a new report" [routerLink]="['cinema','lista-sessao']">
+          <span data-feather="plus-circle" class="align-text-bottom"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2" *ngIf="role$ == 'admin'">
+        <li class="nav-item">
+          <a class="nav-link"   [routerLink]="['cinema','novo-sessao']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            Cadastrar Sessão
+          </a>
         </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-            <a class="btn btn-primary medio" [routerLink]="['cinema','novo-filme']" >Cadastrar Filme</a> 
+        <li class="nav-item" *ngIf="role$ == 'admin'">
+          <a class="nav-link"  [routerLink]="['cinema','lista-sessao']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            CRUD Sessão
+          </a>
         </li>
-        <li *ngIf="user.username; else vazio" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-filme']">Lista de Filmes</a>
+        <li class="nav-item" *ngIf="role$ == 'admin'">
+          <a class="nav-link" [routerLink]="['cinema','grafico-filme']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            Gráfico Sessão
+          </a>
         </li> 
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-gerente']">Lista de Gerente</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-endereco']">Lista de Endereco</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-gerente']">Cadastrar Gerente</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-endereco']">Cadastrar Endereço</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-cinema']">Cadastrar Cinema</a>
-        </li>
-        <li *ngIf="role$ == 'admin'" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-cinema']">Listar Cinema</a>
-        </li> 
-        <li *ngIf="role$ == 'admin'">
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','novo-sessao']">Criar sessão</a>
-        </li> 
-        <li *ngIf="user.username; else vazio" >
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','lista-sessao']">Lista sessão</a>
-        </li>
-        <li *ngIf="role$ == 'admin'">
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','grafico-filme']">Grafico Filme</a>
-        </li>  
-        <li *ngIf="role$ == 'admin'">
-          <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','grafico-sessao']">Grafico Sessão</a>
-        </li> 
-        
       </ul>
+      <!--Cinema-->
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase" *ngIf="role$ == 'admin'">
+        <span>Cinema</span>
+        <a class="link-secondary"  aria-label="Add a new report">
+          <span data-feather="plus-circle" class="align-text-bottom"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2" *ngIf="role$ == 'admin'">
+        <li class="nav-item">
+          <a class="nav-link"  [routerLink]="['cinema','novo-cinema']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            Cadastrar Cinema
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role$ == 'admin'">
+          <a class="nav-link" [routerLink]="['cinema','lista-cinema']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            CRUD Cinema
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role$ == 'admin'">
+          <a class="nav-link"[routerLink]="['cinema','grafico-sessao']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            Gráfico Cinema
+          </a>
+        </li> 
+      </ul>
+      <!--Filme-->
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase" *ngIf="role$ == 'admin'">
+        <span>Filme</span>
+        <a class="link-secondary" href="#" aria-label="Add a new report">
+          <span data-feather="plus-circle" class="align-text-bottom"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2" *ngIf="role$ == 'admin'">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['cinema','novo-filme']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            Cadastrar Filme
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role$ == 'admin'">
+          <a class="nav-link" [routerLink]="['cinema','lista-filme']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            CRUD Filme
+          </a>
+        </li> 
+      </ul>
+      <!--Gerente-->
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase"*ngIf="role$ == 'admin'">
+        <span>Gerente</span>
+        <a class="link-secondary"   aria-label="Add a new report">
+          <span data-feather="plus-circle" class="align-text-bottom"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2" *ngIf="role$ == 'admin'">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['cinema','novo-gerente']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            Cadastrar Gerente
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role$ == 'admin'">
+          <a class="nav-link" [routerLink]="['cinema','novo-gerente']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            CRUD Gerente
+          </a>
+        </li> 
+      </ul>
+      <!--Endereço-->
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase" *ngIf="role$ == 'admin'">
+        <span>Endereço</span>
+        <a class="link-secondary"  aria-label="Add a new report">
+          <span data-feather="plus-circle" class="align-text-bottom"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2" *ngIf="role$ == 'admin'">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['cinema','novo-endereco']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            Cadastrar Endereço
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="role$ == 'admin'">
+          <a class="nav-link" [routerLink]="['cinema','novo-endereco']">
+            <span data-feather="file-text" class="align-text-bottom"></span>
+            CRUD Endereço
+          </a>
+        </li> 
+      </ul>
+      
     </app-menu>
     <div *ngIf="user$ | async as user" class="text-white ">
       <div *ngIf="user.username; else login">
