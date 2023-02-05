@@ -27,13 +27,14 @@ import { AtualizarSessoesComponent } from './atualizar-sessoes/atualizar-sessoes
 import { GraficoFilmeComponent } from './grafico-filme/grafico-filme.component'; 
 import { NgChartjsModule } from 'ng-chartjs';
 import { SessaoAdquiridaComponent } from './componentes/sessaoAdquirida/sessao-adquirida/sessao-adquirida.component';
-import { GraficoSessaoComponent } from './grafico-sessao/grafico-sessao.component'; 
+import { GraficoSessaoComponent } from './grafico-sessao/grafico-sessao.component';
+import { DashboardCinemaComponent } from './dashboard-cinema/dashboard-cinema.component'; 
  
  
 
 
 @NgModule({
-    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent, NovoSessaoComponent, ListaSessaoComponent, AtualizarSessoesComponent, GraficoFilmeComponent, SessaoAdquiridaComponent, GraficoSessaoComponent ],
+    declarations: [HomeCinemaComponent, NovoFilmeComponent, ListaFilmeComponent, AtualizarFilmeComponent, ListaGerenteComponent, NovoGerenteComponent, AtualizarGerenteComponent, ListaEnderecoComponent, NovoEnderecoComponent, AtualizarEnderecoComponent, NovoCinemaComponent, ListaCinemaComponent, AtualizarCinemaComponent, NovoSessaoComponent, ListaSessaoComponent, AtualizarSessoesComponent, GraficoFilmeComponent, SessaoAdquiridaComponent, GraficoSessaoComponent, DashboardCinemaComponent ],
     imports: [
         CommonModule,
         CinemaRoutingModule,

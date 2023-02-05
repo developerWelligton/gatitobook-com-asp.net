@@ -4,12 +4,12 @@
     (click)="menu.abreMenu()"
     (keyup.space)="menu.abreMenu()"
     (mouseenter)="menu.abreMenuMouse()"
-    *ngIf="role$ == 'admin'"
+    *ngIf="role$ == 'admin' || 'regular'"
     > 
     </i>
     <a class="navbar-brand" [routerLink]="['cinema']" >Cinema Management</a>
     <app-menu #menu>  
-      <a class="nav-link"   [routerLink]="['cinema']" *ngIf="role$ == 'admin'">
+      <a class="nav-link"   [routerLink]="['cinema','cinema-dashboard']" *ngIf="role$ == 'admin'">
         <span data-feather="file-text" class="align-text-bottom"></span>
         Dashboard Insigth
       </a>
@@ -19,14 +19,14 @@
           <span data-feather="plus-circle" class="align-text-bottom"></span>
         </a>
       </h6>
-      <ul class="nav flex-column mb-2" *ngIf="role$ == 'admin'">
-        <li class="nav-item">
+      <ul class="nav flex-column mb-2" *ngIf="role$ == 'admin'|| 'regular'">
+        <li class="nav-item" *ngIf="role$ == 'admin'">
           <a class="nav-link"   [routerLink]="['cinema','novo-sessao']">
             <span data-feather="file-text" class="align-text-bottom"></span>
             Cadastrar Sessão
           </a>
         </li>
-        <li class="nav-item" *ngIf="role$ == 'admin'">
+        <li class="nav-item" *ngIf="role$ == 'admin' || 'regular'">
           <a class="nav-link"  [routerLink]="['cinema','lista-sessao']">
             <span data-feather="file-text" class="align-text-bottom"></span>
             CRUD Sessão
@@ -73,14 +73,14 @@
           <span data-feather="plus-circle" class="align-text-bottom"></span>
         </a>
       </h6>
-      <ul class="nav flex-column mb-2" *ngIf="role$ == 'admin'">
-        <li class="nav-item">
+      <ul class="nav flex-column mb-2" *ngIf="role$ == 'admin' || 'regular'">
+        <li class="nav-item" *ngIf="role$ == 'admin'">
           <a class="nav-link" [routerLink]="['cinema','novo-filme']">
             <span data-feather="file-text" class="align-text-bottom"></span>
             Cadastrar Filme
           </a>
         </li>
-        <li class="nav-item" *ngIf="role$ == 'admin'">
+        <li class="nav-item" *ngIf="role$ == 'admin' || 'regular'">
           <a class="nav-link" [routerLink]="['cinema','lista-filme']">
             <span data-feather="file-text" class="align-text-bottom"></span>
             CRUD Filme
@@ -123,7 +123,7 @@
           </a>
         </li>
         <li class="nav-item" *ngIf="role$ == 'admin'">
-          <a class="nav-link" [routerLink]="['cinema','novo-endereco']">
+          <a class="nav-link" [routerLink]="['cinema','lista-endereco']">
             <span data-feather="file-text" class="align-text-bottom"></span>
             CRUD Endereço
           </a>

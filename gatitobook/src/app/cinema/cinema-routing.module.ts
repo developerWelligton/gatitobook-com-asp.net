@@ -6,6 +6,7 @@ import { AtualizarEnderecoComponent } from './atualizar-endereco/atualizar-ender
 import { AtualizarFilmeComponent } from './atualizar-filme/atualizar-filme.component'; 
 import { AtualizarGerenteComponent } from './atualizar-gerente/atualizar-gerente.component';
 import { AtualizarSessoesComponent } from './atualizar-sessoes/atualizar-sessoes.component';
+import { DashboardCinemaComponent } from './dashboard-cinema/dashboard-cinema.component';
 import { GraficoFilmeComponent } from './grafico-filme/grafico-filme.component';
 import { GraficoSessaoComponent } from './grafico-sessao/grafico-sessao.component';
 import { CinemaResolver } from './guards/cinemaResolver';
@@ -30,6 +31,12 @@ const routes: Routes = [
   {
     path: '',
     component: HomeCinemaComponent,
+  },
+  {
+    path: 'cinema-dashboard',
+    component: DashboardCinemaComponent,
+    canActivate:[AutenticacaoGuard],
+    data:{permittedRoles:['admin']}
   },
   {
     path: 'novo-filme',
