@@ -11,12 +11,14 @@ import { SessaoAdquiridaService } from '../sessao-adquirida.service';
 })
 export class SessaoAdquiridaComponent implements OnInit {
   ingressoMaisVendido$: Observable<Ingressos> | undefined  
+  ingressoteste$: Observable<any> | undefined 
   constructor(
     private sessaoAdquiridaService: SessaoAdquiridaService, 
     private usuarioService: UsuarioService ) {  
     }  
   ngOnInit(): void {
     this.ingressoMaisVendido$ = this.sessaoAdquiridaService.retornaIngressoQuantidade(); 
+    this.ingressoteste$ = this.sessaoAdquiridaService.retornaIngressoTotal(); 
   } 
 
 }

@@ -18,4 +18,10 @@ export class SessaoAdquiridaService {
     let head_obj2= new HttpHeaders().set("Authorization","bearer "+token)
     return this.http.get<Ingressos>(`${API_URL_FILMES}/ingresso/sessao-mais-comprada`,{headers:head_obj2});  
   }
+
+  retornaIngressoTotal():Observable<any>{
+    const token = JSON.parse(this.tokenService.retornaToken());  
+    let head_obj2= new HttpHeaders().set("Authorization","bearer "+token)
+    return this.http.get<any>(`${API_URL_FILMES}/ingresso/ingresso-total`,{headers:head_obj2});  
+  }
 }
