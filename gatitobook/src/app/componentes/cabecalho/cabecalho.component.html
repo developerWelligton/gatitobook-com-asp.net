@@ -1,9 +1,10 @@
-<header class="sticky-top mb-5">
+<header class="sticky-top mb-5" >
   <nav class="navbar navbar-dark bg-dark">
     <i class="text-white fa fa-bars mr-2"
     (click)="menu.abreMenu()"
     (keyup.space)="menu.abreMenu()"
     (mouseenter)="menu.abreMenuMouse()"
+    *ngIf="role$ == 'admin'"
     > 
     </i>
     <a class="navbar-brand" [routerLink]="['cinema']" >Cinema Management</a>
@@ -127,6 +128,10 @@
             CRUD Endereço
           </a>
         </li> 
+        <li class="nav-item" *ngIf="role$ == 'admin'"> 
+        </li> 
+        
+
       </ul>
       
     </app-menu>
