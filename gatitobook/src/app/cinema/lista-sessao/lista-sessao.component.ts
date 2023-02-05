@@ -6,7 +6,7 @@ import { catchError, map } from 'rxjs/operators';
 import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
 import { AlertService, AlertTypes } from 'src/app/shared/alert.service';
 import { Sessao } from '../novo-sessao/Sessao';
-import { Ingressos } from './ingressoQuantidade';
+import { Ingressos } from './sessaoQuantidade';
  
 import { Sessoes } from './lista-sessao.interface';
 import { ListaSessaoService } from './lista-sessao.service';
@@ -49,12 +49,7 @@ export class ListaSessaoComponent implements OnInit {
   
    
   }
-
  
-  
-
- 
-
   OnDelete(sessao:Sessoes){
     console.log(sessao)
     this.deleteModalRef = this.modalService.show(this.deleteModal,{class:'modal-sm'})
@@ -101,7 +96,7 @@ export class ListaSessaoComponent implements OnInit {
 
   OnConfirmCreate(){
     let ingresso = { 
-      sessaoId: this.sessaoId, 
+      sessaoId: this.sessaoId,  
     }; 
     this.listaSessaoService.cadastraIngresso(ingresso).subscribe(  
       success => this.OnRefresh(),

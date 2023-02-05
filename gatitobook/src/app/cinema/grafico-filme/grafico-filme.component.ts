@@ -2,7 +2,7 @@ import { Component, OnInit, VERSION } from '@angular/core';
 import { NgChartjsService } from 'ng-chartjs';
 import * as Chart from 'chart.js';
 import { ListaSessaoService } from '../lista-sessao/lista-sessao.service';
-import { Ingressos } from '../lista-sessao/ingressoQuantidade';
+import { Ingressos } from '../lista-sessao/sessaoQuantidade';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 

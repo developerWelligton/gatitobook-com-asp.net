@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenService } from 'src/app/autenticacao/token.service';
 import { environment } from 'src/environments/environment';
-import { Ingressos } from '../../lista-sessao/ingressoQuantidade';
+import { Ingressos } from '../../lista-sessao/sessaoQuantidade';
 const API_URL_FILMES = environment.API_URL_FILMES;
 @Injectable({
   providedIn: 'root'

@@ -55,8 +55,12 @@
         </li>
         <li *ngIf="role$ == 'admin'">
           <br>
-          <a class="btn btn-primary medio" [routerLink]="['cinema','grafico-filme']">Grafico</a>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','grafico-filme']">Grafico Filme</a>
         </li>  
+        <li *ngIf="role$ == 'admin'">
+          <br>
+          <a class="btn btn-primary medio" [routerLink]="['cinema','grafico-sessao']">Grafico Sessão</a>
+        </li> 
         
       </ul>
     </app-menu>

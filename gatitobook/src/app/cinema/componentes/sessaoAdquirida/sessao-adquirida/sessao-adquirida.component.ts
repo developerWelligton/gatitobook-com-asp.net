@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
-import { Ingressos } from 'src/app/cinema/lista-sessao/ingressoQuantidade';
+import { Ingressos } from 'src/app/cinema/lista-sessao/sessaoQuantidade';
 import { SessaoAdquiridaService } from '../sessao-adquirida.service';
  
 @Component({
