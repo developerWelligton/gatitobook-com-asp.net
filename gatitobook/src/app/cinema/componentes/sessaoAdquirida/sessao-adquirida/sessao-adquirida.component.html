@@ -1,5 +1,5 @@
 <ng-container *ngIf="ingressoMaisVendido$ | async as ingressos">
-    <h5 class="card-title">Sessão Mais Vendida (ID): {{ ingressos.sessaoId }}</h5> 
+    <h5 class="card-title">Sessão Mais Vendida: {{ ingressos.sessaoId }} - {{ ingressos.titulo }}</h5> 
     <p>Quantidade Total de Ingressos Adquiridos: {{ ingressos.total }}</p>
 </ng-container>
 <br>

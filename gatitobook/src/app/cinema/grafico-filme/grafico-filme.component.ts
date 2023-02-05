@@ -103,7 +103,7 @@ export class GraficoFilmeComponent implements OnInit {
     const ingressos = this.ingressosQuantidade$.subscribe((ingressos) => { 
       ingressos.forEach(ingresso => {   
         this.lineChartData[0].data.push(ingresso.total);
-        this.lineChartLabels.push(ingresso.sessaoId.toString());
+        this.lineChartLabels.push(ingresso.titulo.toString());
       });
     }); 
    
