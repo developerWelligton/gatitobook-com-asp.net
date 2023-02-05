@@ -1,0 +1,4 @@
+<ng-container *ngIf="ingressoMaisVendido$ | async as ingressos">
+    <p>Sessão ID: {{ ingressos.sessaoId }}</p>
+    <p>Total: {{ ingressos.total }}</p>
+  </ng-container>
